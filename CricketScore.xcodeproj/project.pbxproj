@@ -9,21 +9,36 @@
 /* Begin PBXBuildFile section */
 		C1659EC32BDFC4DF00D9A360 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1659EC22BDFC4DF00D9A360 /* AppDelegate.swift */; };
 		C1659EC52BDFC4DF00D9A360 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1659EC42BDFC4DF00D9A360 /* SceneDelegate.swift */; };
-		C1659EC72BDFC4DF00D9A360 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1659EC62BDFC4DF00D9A360 /* ViewController.swift */; };
 		C1659ECA2BDFC4DF00D9A360 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C1659EC92BDFC4DF00D9A360 /* Base */; };
 		C1659ECC2BDFC4E000D9A360 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1659ECB2BDFC4E000D9A360 /* Assets.xcassets */; };
 		C1659ECF2BDFC4E000D9A360 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C1659ECE2BDFC4E000D9A360 /* Base */; };
+		C1CC86772BE0A3A000B1D64C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C1CC86762BE0A3A000B1D64C /* FirebaseFirestoreSwift */; };
+		C1CC86792BE0A3AD00B1D64C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1CC86782BE0A3AD00B1D64C /* GoogleService-Info.plist */; };
+		C1F803E22BE0C4C30005C784 /* BattingSetupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F803E12BE0C4C30005C784 /* BattingSetupModel.swift */; };
+		C1F803E42BE0C56C0005C784 /* BattingSetupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F803E32BE0C56C0005C784 /* BattingSetupInteractor.swift */; };
+		C1F803E62BE0C57F0005C784 /* BattingSetupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F803E52BE0C57F0005C784 /* BattingSetupPresenter.swift */; };
+		C1F803E82BE0C63E0005C784 /* BattingSetupWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F803E72BE0C63E0005C784 /* BattingSetupWorker.swift */; };
+		C1F803EC2BE0C95C0005C784 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F803EB2BE0C95C0005C784 /* Player.swift */; };
+		C1F803EE2BE0CAB10005C784 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F803ED2BE0CAB10005C784 /* Team.swift */; };
+		C1F803F02BE10CB30005C784 /* BattingSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F803EF2BE10CB30005C784 /* BattingSetupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C1659EBF2BDFC4DF00D9A360 /* CricketScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CricketScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1659EC22BDFC4DF00D9A360 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1659EC42BDFC4DF00D9A360 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C1659EC62BDFC4DF00D9A360 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C1659EC92BDFC4DF00D9A360 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C1659ECB2BDFC4E000D9A360 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1659ECE2BDFC4E000D9A360 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1659ED02BDFC4E000D9A360 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1CC86782BE0A3AD00B1D64C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C1F803E12BE0C4C30005C784 /* BattingSetupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattingSetupModel.swift; sourceTree = "<group>"; };
+		C1F803E32BE0C56C0005C784 /* BattingSetupInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattingSetupInteractor.swift; sourceTree = "<group>"; };
+		C1F803E52BE0C57F0005C784 /* BattingSetupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattingSetupPresenter.swift; sourceTree = "<group>"; };
+		C1F803E72BE0C63E0005C784 /* BattingSetupWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattingSetupWorker.swift; sourceTree = "<group>"; };
+		C1F803EB2BE0C95C0005C784 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		C1F803ED2BE0CAB10005C784 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		C1F803EF2BE10CB30005C784 /* BattingSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattingSetupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1CC86772BE0A3A000B1D64C /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +72,54 @@
 		C1659EC12BDFC4DF00D9A360 /* CricketScore */ = {
 			isa = PBXGroup;
 			children = (
+				C1F803DD2BE0C3580005C784 /* MatchCreate */,
+				C1CC86782BE0A3AD00B1D64C /* GoogleService-Info.plist */,
 				C1659EC22BDFC4DF00D9A360 /* AppDelegate.swift */,
 				C1659EC42BDFC4DF00D9A360 /* SceneDelegate.swift */,
-				C1659EC62BDFC4DF00D9A360 /* ViewController.swift */,
 				C1659EC82BDFC4DF00D9A360 /* Main.storyboard */,
 				C1659ECB2BDFC4E000D9A360 /* Assets.xcassets */,
 				C1659ECD2BDFC4E000D9A360 /* LaunchScreen.storyboard */,
 				C1659ED02BDFC4E000D9A360 /* Info.plist */,
 			);
 			path = CricketScore;
+			sourceTree = "<group>";
+		};
+		C1F803DD2BE0C3580005C784 /* MatchCreate */ = {
+			isa = PBXGroup;
+			children = (
+				C1F803DF2BE0C3B20005C784 /* Scenes */,
+				C1F803DE2BE0C3820005C784 /* Models */,
+			);
+			path = MatchCreate;
+			sourceTree = "<group>";
+		};
+		C1F803DE2BE0C3820005C784 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C1F803EB2BE0C95C0005C784 /* Player.swift */,
+				C1F803ED2BE0CAB10005C784 /* Team.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C1F803DF2BE0C3B20005C784 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				C1F803E02BE0C3F80005C784 /* BattingSetup */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		C1F803E02BE0C3F80005C784 /* BattingSetup */ = {
+			isa = PBXGroup;
+			children = (
+				C1F803E12BE0C4C30005C784 /* BattingSetupModel.swift */,
+				C1F803E32BE0C56C0005C784 /* BattingSetupInteractor.swift */,
+				C1F803E52BE0C57F0005C784 /* BattingSetupPresenter.swift */,
+				C1F803E72BE0C63E0005C784 /* BattingSetupWorker.swift */,
+				C1F803EF2BE10CB30005C784 /* BattingSetupViewController.swift */,
+			);
+			path = BattingSetup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +138,9 @@
 			dependencies = (
 			);
 			name = CricketScore;
+			packageProductDependencies = (
+				C1CC86762BE0A3A000B1D64C /* FirebaseFirestoreSwift */,
+			);
 			productName = CricketScore;
 			productReference = C1659EBF2BDFC4DF00D9A360 /* CricketScore.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +169,9 @@
 				Base,
 			);
 			mainGroup = C1659EB62BDFC4DF00D9A360;
+			packageReferences = (
+				C1CC86752BE0A3A000B1D64C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = C1659EC02BDFC4DF00D9A360 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1659ECC2BDFC4E000D9A360 /* Assets.xcassets in Resources */,
+				C1CC86792BE0A3AD00B1D64C /* GoogleService-Info.plist in Resources */,
 				C1659ECF2BDFC4E000D9A360 /* Base in Resources */,
 				C1659ECA2BDFC4DF00D9A360 /* Base in Resources */,
 			);
@@ -138,9 +200,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1659EC72BDFC4DF00D9A360 /* ViewController.swift in Sources */,
+				C1F803E22BE0C4C30005C784 /* BattingSetupModel.swift in Sources */,
+				C1F803E42BE0C56C0005C784 /* BattingSetupInteractor.swift in Sources */,
 				C1659EC32BDFC4DF00D9A360 /* AppDelegate.swift in Sources */,
 				C1659EC52BDFC4DF00D9A360 /* SceneDelegate.swift in Sources */,
+				C1F803E62BE0C57F0005C784 /* BattingSetupPresenter.swift in Sources */,
+				C1F803EE2BE0CAB10005C784 /* Team.swift in Sources */,
+				C1F803F02BE10CB30005C784 /* BattingSetupViewController.swift in Sources */,
+				C1F803EC2BE0C95C0005C784 /* Player.swift in Sources */,
+				C1F803E82BE0C63E0005C784 /* BattingSetupWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +431,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C1CC86752BE0A3A000B1D64C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.24.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C1CC86762BE0A3A000B1D64C /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1CC86752BE0A3A000B1D64C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C1659EB72BDFC4DF00D9A360 /* Project object */;
 }
