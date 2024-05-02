@@ -12,7 +12,6 @@ protocol BattingSetupLogic: AnyObject {
     func assembleTeam(request: BattingSetupModel.Request) -> BattingSetupModel.Response
 }
 
-
 class BattingSetupViewController: UIViewController, DisplayBattingSetupError {
     
     var interactor: BattingSetupLogic?
@@ -56,7 +55,8 @@ class BattingSetupViewController: UIViewController, DisplayBattingSetupError {
               let playerName2Text = playerName2.text,
               let playerName3Text = playerName3.text,
               let playerName4Text = playerName4.text,
-              let playerName5Text = playerName5.text else {
+              let playerName5Text = playerName5.text
+        else {
             print("BATTING SETUP VIEW CONTROLLER: At least one of the text fields is nil")
             return
         }

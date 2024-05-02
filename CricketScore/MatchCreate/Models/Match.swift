@@ -8,7 +8,6 @@
 import Foundation
 
 struct Match : Codable {
-    let id: String?
     let battingTeamId : String
     let bowlingTeamId : String?
 }
