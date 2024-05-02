@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SetupList {
+struct BattingSetupModel {
     struct Request {
         let teamName, playerName1, playerName2, playerName3, playerName4, playerName5: String
     }

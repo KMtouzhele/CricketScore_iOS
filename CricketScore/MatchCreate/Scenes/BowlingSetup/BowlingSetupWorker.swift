@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+class BowlingSetupWorker : BowlingSetupToFirestore {
+    func addTeamAndPlayersToFirestore(response: BattingSetupModel.Response) {
+        return
+    }
+    
+    func addMatchToFirebase(response: BowlingSetupModel.Response) {
+        return
+    }
+    
+    
+}

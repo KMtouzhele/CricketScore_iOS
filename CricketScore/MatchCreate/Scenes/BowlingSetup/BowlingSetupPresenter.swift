@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol DisplayBowlingSetupError: AnyObject {
+    func createToast(viewModel: BattingSetupModel.ViewModel.emptyError)
+}

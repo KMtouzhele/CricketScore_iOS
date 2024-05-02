@@ -9,20 +9,22 @@ import Foundation
 import FirebaseFirestoreSwift
 import Firebase
 
-class BattingSetupWorker : TeamSetupToFirestore {
+class BattingSetupWorker : BattingTeamSetupToFirestore {
     let db = Firestore.firestore()
 
-    func addTeamAndPlayersToFirestore(response: SetupList.Response){
+    func addTeamAndPlayersToFirestore(response: BattingSetupModel.Response, completion: @escaping (String?) -> Void){
         addTeamToFirestore(response: response) { teamDocId in
             if let teamDocId = teamDocId {
                 self.addPlayersToFirestore(response: response, teamDocID: teamDocId)
+                completion(teamDocId)
             } else {
                 print("Failed to add team to Firestore.")
+                completion(nil)
             }
         }
     }
 
-    func addTeamToFirestore(response: SetupList.Response, completion: @escaping (String?) -> Void) {
+    func addTeamToFirestore(response: BattingSetupModel.Response, completion: @escaping (String?) -> Void) {
         let team = response.team
         let teamsCollection = db.collection("teams")
         var teamDoc: DocumentReference?
@@ -43,8 +45,7 @@ class BattingSetupWorker : TeamSetupToFirestore {
     }
 
     
-    func addPlayersToFirestore(response: SetupList.Response, teamDocID: String) {
-        let team = response.team
+    func addPlayersToFirestore(response: BattingSetupModel.Response, teamDocID: String) {
         let players = response.players
         let playersCollection = db.collection("players")
         

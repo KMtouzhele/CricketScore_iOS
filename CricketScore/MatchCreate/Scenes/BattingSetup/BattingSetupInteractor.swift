@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 
-protocol TeamSetupToFirestore: AnyObject {
-    func addTeamAndPlayersToFirestore(response: SetupList.Response)
+protocol BattingTeamSetupToFirestore: AnyObject {
+    func addTeamAndPlayersToFirestore(response: BattingSetupModel.Response, completion: @escaping (String?) -> Void)
 }
 
-protocol PresentMessage: AnyObject {
-    func presentEmptyMessage()
+protocol PresentBattingSetupMessage: AnyObject {
+    func dealWithEmptyResult(emptyResult: Bool, teamId: String)
 }
 
 class BattingSetupInteractor : BattingSetupLogic {
@@ -24,7 +24,7 @@ class BattingSetupInteractor : BattingSetupLogic {
         self.presenter = presenter
     }
     
-    func assembleTeam(request: SetupList.Request) -> SetupList.Response {
+    func assembleTeam(request: BattingSetupModel.Request) -> BattingSetupModel.Response {
         let player1 = Player(name: request.playerName1, position: 1, status: playerStatus.available)
         let player2 = Player(name: request.playerName2, position: 2, status: playerStatus.available)
         let player3 = Player(name: request.playerName3, position: 3, status: playerStatus.available)
@@ -33,11 +33,11 @@ class BattingSetupInteractor : BattingSetupLogic {
         let players = [player1, player2, player3, player4, player5]
         let teamName = request.teamName
         let team = Team(name: teamName, type: teamType.battingTeam)
-        let response = SetupList.Response(team: team, players: players)
+        let response = BattingSetupModel.Response(team: team, players: players)
         return response
     }
     
-    func emptyValidation(request: SetupList.Request) {
+    func emptyValidation(request: BattingSetupModel.Request) {
         let teamName = request.teamName
         let playerName1 = request.playerName1
         let playerName2 = request.playerName2
@@ -52,10 +52,19 @@ class BattingSetupInteractor : BattingSetupLogic {
             playerName4.isEmpty ||
             playerName5.isEmpty
         ) {
-            self.presenter.presentEmptyMessage()
+            self.presenter.dealWithEmptyResult(emptyResult: true, teamId: "")
+            print("BattingSetupInteractor: Some textfields are empty.")
         } else {
+            print("BattingSetupInteractor: Valid input. Assembling batting team info.")
             let response = assembleTeam(request: request)
-            worker.addTeamAndPlayersToFirestore(response: response)
+            worker.addTeamAndPlayersToFirestore(response: response) { teamId in
+                if let teamId = teamId {
+                    print("BattingSetupInteractor: BattingTeamId: \(teamId)")
+                    self.presenter.dealWithEmptyResult(emptyResult: false, teamId: teamId)
+                } else {
+                    print("BattingSetupInteractor: BattingTeamId is nil")
+                }
+            }
         }
     }
     

@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1212AD92BE3559C00D7E928 /* MatchHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1212AD82BE3559C00D7E928 /* MatchHistoryViewController.swift */; };
+		C1212ADB2BE3579E00D7E928 /* MatchHistoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1212ADA2BE3579E00D7E928 /* MatchHistoryRouter.swift */; };
+		C1212ADD2BE363C600D7E928 /* BowlingSetupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1212ADC2BE363C500D7E928 /* BowlingSetupModel.swift */; };
+		C1212ADF2BE3645A00D7E928 /* BowlingSetupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1212ADE2BE3645A00D7E928 /* BowlingSetupInteractor.swift */; };
+		C1212AE12BE3646B00D7E928 /* BowlingSetupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1212AE02BE3646B00D7E928 /* BowlingSetupPresenter.swift */; };
+		C1212AE32BE3648F00D7E928 /* BowlingSetupWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1212AE22BE3648F00D7E928 /* BowlingSetupWorker.swift */; };
+		C1212AE52BE365AE00D7E928 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1212AE42BE365AE00D7E928 /* Match.swift */; };
+		C143660C2BE3514C00FBEB28 /* BowlingSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C143660B2BE3514C00FBEB28 /* BowlingSetupViewController.swift */; };
 		C1659EC32BDFC4DF00D9A360 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1659EC22BDFC4DF00D9A360 /* AppDelegate.swift */; };
 		C1659EC52BDFC4DF00D9A360 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1659EC42BDFC4DF00D9A360 /* SceneDelegate.swift */; };
 		C1659ECA2BDFC4DF00D9A360 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C1659EC92BDFC4DF00D9A360 /* Base */; };
@@ -24,6 +32,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C1212AD82BE3559C00D7E928 /* MatchHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHistoryViewController.swift; sourceTree = "<group>"; };
+		C1212ADA2BE3579E00D7E928 /* MatchHistoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHistoryRouter.swift; sourceTree = "<group>"; };
+		C1212ADC2BE363C500D7E928 /* BowlingSetupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlingSetupModel.swift; sourceTree = "<group>"; };
+		C1212ADE2BE3645A00D7E928 /* BowlingSetupInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlingSetupInteractor.swift; sourceTree = "<group>"; };
+		C1212AE02BE3646B00D7E928 /* BowlingSetupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlingSetupPresenter.swift; sourceTree = "<group>"; };
+		C1212AE22BE3648F00D7E928 /* BowlingSetupWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlingSetupWorker.swift; sourceTree = "<group>"; };
+		C1212AE42BE365AE00D7E928 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		C143660B2BE3514C00FBEB28 /* BowlingSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlingSetupViewController.swift; sourceTree = "<group>"; };
 		C1659EBF2BDFC4DF00D9A360 /* CricketScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CricketScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1659EC22BDFC4DF00D9A360 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1659EC42BDFC4DF00D9A360 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +69,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C1212AD72BE3557E00D7E928 /* MatchHistory */ = {
+			isa = PBXGroup;
+			children = (
+				C1212AD82BE3559C00D7E928 /* MatchHistoryViewController.swift */,
+				C1212ADA2BE3579E00D7E928 /* MatchHistoryRouter.swift */,
+			);
+			path = MatchHistory;
+			sourceTree = "<group>";
+		};
+		C143660A2BE3512C00FBEB28 /* BowlingSetup */ = {
+			isa = PBXGroup;
+			children = (
+				C143660B2BE3514C00FBEB28 /* BowlingSetupViewController.swift */,
+				C1212ADC2BE363C500D7E928 /* BowlingSetupModel.swift */,
+				C1212ADE2BE3645A00D7E928 /* BowlingSetupInteractor.swift */,
+				C1212AE02BE3646B00D7E928 /* BowlingSetupPresenter.swift */,
+				C1212AE22BE3648F00D7E928 /* BowlingSetupWorker.swift */,
+			);
+			path = BowlingSetup;
+			sourceTree = "<group>";
+		};
 		C1659EB62BDFC4DF00D9A360 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +135,7 @@
 			children = (
 				C1F803EB2BE0C95C0005C784 /* Player.swift */,
 				C1F803ED2BE0CAB10005C784 /* Team.swift */,
+				C1212AE42BE365AE00D7E928 /* Match.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -105,6 +143,8 @@
 		C1F803DF2BE0C3B20005C784 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C1212AD72BE3557E00D7E928 /* MatchHistory */,
+				C143660A2BE3512C00FBEB28 /* BowlingSetup */,
 				C1F803E02BE0C3F80005C784 /* BattingSetup */,
 			);
 			path = Scenes;
@@ -200,14 +240,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1212AE32BE3648F00D7E928 /* BowlingSetupWorker.swift in Sources */,
 				C1F803E22BE0C4C30005C784 /* BattingSetupModel.swift in Sources */,
+				C1212AE12BE3646B00D7E928 /* BowlingSetupPresenter.swift in Sources */,
 				C1F803E42BE0C56C0005C784 /* BattingSetupInteractor.swift in Sources */,
+				C1212ADD2BE363C600D7E928 /* BowlingSetupModel.swift in Sources */,
+				C143660C2BE3514C00FBEB28 /* BowlingSetupViewController.swift in Sources */,
+				C1212ADB2BE3579E00D7E928 /* MatchHistoryRouter.swift in Sources */,
 				C1659EC32BDFC4DF00D9A360 /* AppDelegate.swift in Sources */,
+				C1212AE52BE365AE00D7E928 /* Match.swift in Sources */,
 				C1659EC52BDFC4DF00D9A360 /* SceneDelegate.swift in Sources */,
 				C1F803E62BE0C57F0005C784 /* BattingSetupPresenter.swift in Sources */,
+				C1212ADF2BE3645A00D7E928 /* BowlingSetupInteractor.swift in Sources */,
 				C1F803EE2BE0CAB10005C784 /* Team.swift in Sources */,
 				C1F803F02BE10CB30005C784 /* BattingSetupViewController.swift in Sources */,
 				C1F803EC2BE0C95C0005C784 /* Player.swift in Sources */,
+				C1212AD92BE3559C00D7E928 /* MatchHistoryViewController.swift in Sources */,
 				C1F803E82BE0C63E0005C784 /* BattingSetupWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,6 +416,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -396,6 +445,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
