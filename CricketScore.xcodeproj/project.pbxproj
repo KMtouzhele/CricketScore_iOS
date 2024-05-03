@@ -14,6 +14,7 @@
 		C1212AE12BE3646B00D7E928 /* BowlingSetupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1212AE02BE3646B00D7E928 /* BowlingSetupPresenter.swift */; };
 		C1212AE32BE3648F00D7E928 /* BowlingSetupWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1212AE22BE3648F00D7E928 /* BowlingSetupWorker.swift */; };
 		C1212AE52BE365AE00D7E928 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1212AE42BE365AE00D7E928 /* Match.swift */; };
+		C13405422BE484D000D894BA /* ScoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13405412BE484D000D894BA /* ScoringViewController.swift */; };
 		C143660C2BE3514C00FBEB28 /* BowlingSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C143660B2BE3514C00FBEB28 /* BowlingSetupViewController.swift */; };
 		C1659EC32BDFC4DF00D9A360 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1659EC22BDFC4DF00D9A360 /* AppDelegate.swift */; };
 		C1659EC52BDFC4DF00D9A360 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1659EC42BDFC4DF00D9A360 /* SceneDelegate.swift */; };
@@ -39,6 +40,7 @@
 		C1212AE02BE3646B00D7E928 /* BowlingSetupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlingSetupPresenter.swift; sourceTree = "<group>"; };
 		C1212AE22BE3648F00D7E928 /* BowlingSetupWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlingSetupWorker.swift; sourceTree = "<group>"; };
 		C1212AE42BE365AE00D7E928 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		C13405412BE484D000D894BA /* ScoringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringViewController.swift; sourceTree = "<group>"; };
 		C143660B2BE3514C00FBEB28 /* BowlingSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlingSetupViewController.swift; sourceTree = "<group>"; };
 		C1659EBF2BDFC4DF00D9A360 /* CricketScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CricketScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1659EC22BDFC4DF00D9A360 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,14 @@
 				C1212ADA2BE3579E00D7E928 /* MatchHistoryRouter.swift */,
 			);
 			path = MatchHistory;
+			sourceTree = "<group>";
+		};
+		C13405402BE484B900D894BA /* Scoring */ = {
+			isa = PBXGroup;
+			children = (
+				C13405412BE484D000D894BA /* ScoringViewController.swift */,
+			);
+			path = Scoring;
 			sourceTree = "<group>";
 		};
 		C143660A2BE3512C00FBEB28 /* BowlingSetup */ = {
@@ -143,6 +153,7 @@
 		C1F803DF2BE0C3B20005C784 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C13405402BE484B900D894BA /* Scoring */,
 				C1212AD72BE3557E00D7E928 /* MatchHistory */,
 				C143660A2BE3512C00FBEB28 /* BowlingSetup */,
 				C1F803E02BE0C3F80005C784 /* BattingSetup */,
@@ -244,6 +255,7 @@
 				C1F803E22BE0C4C30005C784 /* BattingSetupModel.swift in Sources */,
 				C1212AE12BE3646B00D7E928 /* BowlingSetupPresenter.swift in Sources */,
 				C1F803E42BE0C56C0005C784 /* BattingSetupInteractor.swift in Sources */,
+				C13405422BE484D000D894BA /* ScoringViewController.swift in Sources */,
 				C1212ADD2BE363C600D7E928 /* BowlingSetupModel.swift in Sources */,
 				C143660C2BE3514C00FBEB28 /* BowlingSetupViewController.swift in Sources */,
 				C1212ADB2BE3579E00D7E928 /* MatchHistoryRouter.swift in Sources */,

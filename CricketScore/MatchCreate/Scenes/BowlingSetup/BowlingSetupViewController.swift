@@ -35,6 +35,27 @@ class BowlingSetupViewController: UIViewController {
         }
     }
     
+    func navigateToScoreBoard(battingTeamId: String, bowlingTeamId: String, matchId: String) {
+        self.battingTeamId = battingTeamId
+        self.bowlingTeamId = bowlingTeamId
+        self.matchId = matchId
+        performSegue(withIdentifier: "ShowScoreBoardSegue", sender: nil)
+        print("SegueToScoring \(String(describing: self.battingTeamId)) \(String(describing: self.bowlingTeamId)) \(String(describing: self.matchId))")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowScoreBoardSegue" {
+            if let destinationVC = segue.destination as? UITabBarController {
+                if let scoringVC = destinationVC.viewControllers?[0] as? ScoringViewController{
+                    scoringVC.battingTeamId = self.battingTeamId
+                    scoringVC.bowlingTeamId = self.bowlingTeamId
+                    scoringVC.matchId = self.matchId
+                }
+                
+            }
+        }
+    }
+    
     @IBAction func startMatch(_ sender: UIButton) {
         print("Match Starts Button was tapped.")
         guard let teamNameText = teamName.text,

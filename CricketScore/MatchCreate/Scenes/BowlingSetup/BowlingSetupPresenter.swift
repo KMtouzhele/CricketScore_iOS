@@ -25,5 +25,13 @@ class BowlingSetupPresenter: PresentBowlingSetupMessage {
         viewController.createToast(viewModel: viewModel)
     }
     
+    func presentNextPage(battingTeamId: String, bowlingTeamId: String, matchID: String){
+        viewController?.navigateToScoreBoard(
+            battingTeamId: battingTeamId,
+            bowlingTeamId: bowlingTeamId,
+            matchId: matchID
+        )
+    }
+    
     
 }

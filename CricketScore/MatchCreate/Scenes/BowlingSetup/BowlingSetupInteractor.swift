@@ -48,7 +48,17 @@ class BowlingSetupInteractor : BowlingSetupLogic {
             if let teamDocId = teamDocId {
                 self.bowlingTeamId = teamDocId
                 print("Bowling Team ID: \(teamDocId)")
-                self.startAddingMatchToFirestore(request: request, bowlingTeamId: teamDocId, completion: completion)
+                self.startAddingMatchToFirestore(
+                    request: request,
+                    bowlingTeamId: teamDocId,
+                    completion: { bowlingTeamId, matchId in
+                        self.presenter.presentNextPage(
+                            battingTeamId: request.battingTeamId,
+                            bowlingTeamId: bowlingTeamId!,
+                            matchID: matchId!
+                        )
+                    }
+                )
             } else {
                 print("Bowling Team ID: nil. Added failed")
             }
