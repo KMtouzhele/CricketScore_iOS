@@ -15,6 +15,8 @@
 		C1212AE32BE3648F00D7E928 /* BowlingSetupWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1212AE22BE3648F00D7E928 /* BowlingSetupWorker.swift */; };
 		C1212AE52BE365AE00D7E928 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1212AE42BE365AE00D7E928 /* Match.swift */; };
 		C13405422BE484D000D894BA /* ScoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13405412BE484D000D894BA /* ScoringViewController.swift */; };
+		C13405442BE5059C00D894BA /* ScoringModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13405432BE5059C00D894BA /* ScoringModel.swift */; };
+		C13405462BE5063A00D894BA /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13405452BE5063A00D894BA /* Ball.swift */; };
 		C143660C2BE3514C00FBEB28 /* BowlingSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C143660B2BE3514C00FBEB28 /* BowlingSetupViewController.swift */; };
 		C1659EC32BDFC4DF00D9A360 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1659EC22BDFC4DF00D9A360 /* AppDelegate.swift */; };
 		C1659EC52BDFC4DF00D9A360 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1659EC42BDFC4DF00D9A360 /* SceneDelegate.swift */; };
@@ -41,6 +43,8 @@
 		C1212AE22BE3648F00D7E928 /* BowlingSetupWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlingSetupWorker.swift; sourceTree = "<group>"; };
 		C1212AE42BE365AE00D7E928 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		C13405412BE484D000D894BA /* ScoringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringViewController.swift; sourceTree = "<group>"; };
+		C13405432BE5059C00D894BA /* ScoringModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringModel.swift; sourceTree = "<group>"; };
+		C13405452BE5063A00D894BA /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		C143660B2BE3514C00FBEB28 /* BowlingSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlingSetupViewController.swift; sourceTree = "<group>"; };
 		C1659EBF2BDFC4DF00D9A360 /* CricketScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CricketScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1659EC22BDFC4DF00D9A360 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				C13405412BE484D000D894BA /* ScoringViewController.swift */,
+				C13405432BE5059C00D894BA /* ScoringModel.swift */,
 			);
 			path = Scoring;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 				C1F803EB2BE0C95C0005C784 /* Player.swift */,
 				C1F803ED2BE0CAB10005C784 /* Team.swift */,
 				C1212AE42BE365AE00D7E928 /* Match.swift */,
+				C13405452BE5063A00D894BA /* Ball.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -263,8 +269,10 @@
 				C1212AE52BE365AE00D7E928 /* Match.swift in Sources */,
 				C1659EC52BDFC4DF00D9A360 /* SceneDelegate.swift in Sources */,
 				C1F803E62BE0C57F0005C784 /* BattingSetupPresenter.swift in Sources */,
+				C13405462BE5063A00D894BA /* Ball.swift in Sources */,
 				C1212ADF2BE3645A00D7E928 /* BowlingSetupInteractor.swift in Sources */,
 				C1F803EE2BE0CAB10005C784 /* Team.swift in Sources */,
+				C13405442BE5059C00D894BA /* ScoringModel.swift in Sources */,
 				C1F803F02BE10CB30005C784 /* BattingSetupViewController.swift in Sources */,
 				C1F803EC2BE0C95C0005C784 /* Player.swift in Sources */,
 				C1212AD92BE3559C00D7E928 /* MatchHistoryViewController.swift in Sources */,
