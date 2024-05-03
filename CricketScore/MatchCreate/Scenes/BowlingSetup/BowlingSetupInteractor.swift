@@ -39,49 +39,53 @@ class BowlingSetupInteractor : BowlingSetupLogic {
             self.presenter.presentEmptyMessage()
         } else {
             startAddingTeamToFirestore(request: request)
-            startAddingMatchToFirestore(request: request)
         }
     }
     
-    func startAddingTeamToFirestore(request: BowlingSetupModel.Request){
+    private func startAddingTeamToFirestore(request: BowlingSetupModel.Request){
         let response = assembleTeam(request: request)
         worker.addTeamAndPlayersToFirestore(response: response) { teamDocId in
             if let teamDocId = teamDocId {
                 self.bowlingTeamId = teamDocId
+                print("Bowling Team ID: \(teamDocId)")
+                self.startAddingMatchToFirestore(request: request, bowlingTeamId: teamDocId)
             } else {
-                self.bowlingTeamId = nil
+                print("Bowling Team ID: nil. Added failed")
             }
         }
     }
     
-    func startAddingMatchToFirestore(request: BowlingSetupModel.Request){
+    private func startAddingMatchToFirestore(request: BowlingSetupModel.Request, bowlingTeamId: String){
         let response = assembleMatch(request: request)
         worker.addMatchToFirebase(response: response)
-        
     }
     
-    func assembleTeam(request: BowlingSetupModel.Request) -> BowlingSetupModel.Response {
+    private func assembleTeam(request: BowlingSetupModel.Request) -> BowlingSetupModel.Response {
         let player1 = Player(name: request.playerName1, position: 1, status: playerStatus.available)
         let player2 = Player(name: request.playerName2, position: 2, status: playerStatus.available)
         let player3 = Player(name: request.playerName3, position: 3, status: playerStatus.available)
         let player4 = Player(name: request.playerName4, position: 4, status: playerStatus.available)
         let player5 = Player(name: request.playerName5, position: 5, status: playerStatus.available)
-        self.bowlers = [player1, player2, player3, player4, player5]
+        bowlers = [player1, player2, player3, player4, player5]
         let teamName = request.teamName
         let battingTeamId = request.battingTeamId
         let team = Team(name: teamName, type: teamType.bowlingTeam)
-        self.match = Match(battingTeamId: battingTeamId, bowlingTeamId: nil)
-        let response = BowlingSetupModel.Response(team: team, players: self.bowlers!, match: self.match!)
+        match = Match(battingTeamId: battingTeamId, bowlingTeamId: nil)
+        let response = BowlingSetupModel.Response(team: team, players: bowlers ?? [], match: match!)
         return response
     }
     
-    func assembleMatch(request: BowlingSetupModel.Request) -> BowlingSetupModel.Response {
-        self.match = Match(battingTeamId: request.battingTeamId, bowlingTeamId: self.bowlingTeamId)
-        let response = BowlingSetupModel.Response(team: self.bowlingTeam!, players: self.bowlers!, match: self.match!)
+    private func assembleMatch(request: BowlingSetupModel.Request) -> BowlingSetupModel.Response {
+        match = Match(battingTeamId: request.battingTeamId, bowlingTeamId: bowlingTeamId)
+        let response = BowlingSetupModel.Response(
+            team: bowlingTeam ?? Team(name: "Default Team", type: teamType.bowlingTeam),
+            players: bowlers ?? [],
+            match: match!
+        )
         return response
     }
     
-    func emptyValidation(request: BowlingSetupModel.Request) -> Bool {
+    private func emptyValidation(request: BowlingSetupModel.Request) -> Bool {
         let teamName = request.teamName
         let playerName1 = request.playerName1
         let playerName2 = request.playerName2
