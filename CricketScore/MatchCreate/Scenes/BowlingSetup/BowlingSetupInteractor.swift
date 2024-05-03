@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol BowlingSetupToFirestore: AnyObject {
-    func addMatchToFirebase(response: BowlingSetupModel.Response)
+    func addMatchToFirebase(response: BowlingSetupModel.Response, completion: @escaping (String?) -> Void)
     func addTeamAndPlayersToFirestore(response: BowlingSetupModel.Response, completion: @escaping (String?) -> Void)
 
 }
@@ -32,32 +32,34 @@ class BowlingSetupInteractor : BowlingSetupLogic {
         self.presenter = presenter
     }
     
-    func prepareToFirestore(request: BowlingSetupModel.Request){
+    func prepareToFirestore(request: BowlingSetupModel.Request, completion: @escaping (String?, String?) -> Void) {
         print("prepareToFirestore Function is called")
         let isEmpty = emptyValidation(request: request)
         if isEmpty {
             self.presenter.presentEmptyMessage()
         } else {
-            startAddingTeamToFirestore(request: request)
+            startAddingTeamToFirestore(request: request,completion: completion)
         }
     }
     
-    private func startAddingTeamToFirestore(request: BowlingSetupModel.Request){
+    private func startAddingTeamToFirestore(request: BowlingSetupModel.Request, completion: @escaping (String?, String?) -> Void) {
         let response = assembleTeam(request: request)
         worker.addTeamAndPlayersToFirestore(response: response) { teamDocId in
             if let teamDocId = teamDocId {
                 self.bowlingTeamId = teamDocId
                 print("Bowling Team ID: \(teamDocId)")
-                self.startAddingMatchToFirestore(request: request, bowlingTeamId: teamDocId)
+                self.startAddingMatchToFirestore(request: request, bowlingTeamId: teamDocId, completion: completion)
             } else {
                 print("Bowling Team ID: nil. Added failed")
             }
         }
     }
     
-    private func startAddingMatchToFirestore(request: BowlingSetupModel.Request, bowlingTeamId: String){
+    private func startAddingMatchToFirestore(request: BowlingSetupModel.Request, bowlingTeamId: String, completion: @escaping (String?, String?) -> Void){
         let response = assembleMatch(request: request)
-        worker.addMatchToFirebase(response: response)
+        worker.addMatchToFirebase(response: response) { matchId in
+            completion(bowlingTeamId, matchId)
+        }
     }
     
     private func assembleTeam(request: BowlingSetupModel.Request) -> BowlingSetupModel.Response {

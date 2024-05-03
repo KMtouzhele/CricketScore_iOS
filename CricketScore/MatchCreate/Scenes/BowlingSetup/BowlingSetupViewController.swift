@@ -9,11 +9,13 @@ import Foundation
 import UIKit
 
 protocol BowlingSetupLogic: AnyObject {
-    func prepareToFirestore(request: BowlingSetupModel.Request)
+    func prepareToFirestore(request: BowlingSetupModel.Request, completion: @escaping (String?, String?) -> Void)
 }
 
 class BowlingSetupViewController: UIViewController {
     var battingTeamId: String?
+    var bowlingTeamId: String?
+    var matchId: String?
     var interactor: BowlingSetupLogic?
     var request: BowlingSetupModel.Request?
     var presenter = BowlingSetupPresenter()
@@ -55,7 +57,11 @@ class BowlingSetupViewController: UIViewController {
             battingTeamId: self.battingTeamId!
         )
         print("request is generated!")
-        self.interactor?.prepareToFirestore(request: request)
+        self.interactor?.prepareToFirestore(request: request, completion: { bowlingTeamId, matchId in
+            self.bowlingTeamId = bowlingTeamId
+            self.matchId = matchId
+            print("VC: \(String(describing: self.bowlingTeamId)) and \(String(describing: self.matchId))")
+        })
     }
     @IBOutlet weak var alertLabel: UILabel!
     @IBOutlet weak var teamName: UITextField!

@@ -24,28 +24,27 @@ class BowlingSetupWorker : BowlingSetupToFirestore {
         }
     }
     
-    func addMatchToFirebase(response: BowlingSetupModel.Response) {
+    func addMatchToFirebase(response: BowlingSetupModel.Response, completion: @escaping (String?) -> Void) {
         let match = response.match
         let matchesCollection = db.collection("matches")
-        //var matchDoc: DocumentReference?
+        var matchDoc: DocumentReference?
         do {
-            //let matchDoc = 
-            try matchesCollection.addDocument(from: match) { (err) in
+            matchDoc = try matchesCollection.addDocument(from: match) { (err) in
                 if let err = err {
                     print("Error adding match document: \(err)")
-                    //completion(nil)
+                    completion(nil)
                 } else {
                     print("Successfully created match.")
-                    //completion(matchDoc?.documentID)
+                    completion(matchDoc?.documentID)
                 }
             }
         } catch let error {
             print("Error writing match to Firestore: \(error)")
-            //completion(nil)
+            completion(nil)
         }
     }
     
-    func addTeamToFirestore(response: BowlingSetupModel.Response, completion: @escaping (String?) -> Void) {
+    private func addTeamToFirestore(response: BowlingSetupModel.Response, completion: @escaping (String?) -> Void) {
         let team = response.team
         let teamsCollection = db.collection("teams")
         var teamDoc: DocumentReference?
