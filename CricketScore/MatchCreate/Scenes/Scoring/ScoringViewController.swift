@@ -15,13 +15,5 @@ class ScoringViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        battingTxt.text = battingTeamId
-        bowlingTxt.text = bowlingTeamId
-        matchTxt.text = matchId
     }
-
-
-    @IBOutlet weak var battingTxt: UILabel!
-    @IBOutlet weak var bowlingTxt: UILabel!
-    @IBOutlet weak var matchTxt: UILabel!
 }
