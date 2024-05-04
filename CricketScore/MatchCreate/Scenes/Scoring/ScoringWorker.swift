@@ -6,3 +6,51 @@
 //
 
 import Foundation
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+
+class ScoringWorker: RetrievePlayersFromFirestore, BallToFirestore {
+    func getPlayers(teamId: String) -> [String: String] {
+        var players = [String: String]()
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
+        getPlayersByTeamId(teamId: teamId) { (result, error) in
+            if let result = result {
+                players = result
+            }
+            dispatchGroup.leave()
+        }
+        dispatchGroup.wait()
+        return players
+    }
+    
+    func addBallToFirestore(response: ScoringModel.Response.bassResponse) {
+        return
+    }
+    
+    func getPlayersByTeamId(teamId: String, completion: @escaping([String : String]?, Error?) -> Void) {
+        var playersDictionary = [String: String]()
+        
+        let db = Firestore.firestore()
+        let playersCollection = db.collection("players")
+        
+        let query = playersCollection.whereField("teamId", isEqualTo: teamId)
+        query.getDocuments { (snapshot, error) in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            guard let documents = snapshot?.documents else {
+                completion(nil, nil)
+                return
+            }
+            
+            for doc in documents {
+                let docId = doc.documentID
+                let playerName = doc.data()["name"] as? String ?? ""
+                playersDictionary[docId] = playerName
+            }
+            completion(playersDictionary, nil)
+        }
+    }
+}

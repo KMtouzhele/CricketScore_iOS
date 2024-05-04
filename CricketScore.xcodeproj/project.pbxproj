@@ -14,6 +14,9 @@
 		C1212AE12BE3646B00D7E928 /* BowlingSetupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1212AE02BE3646B00D7E928 /* BowlingSetupPresenter.swift */; };
 		C1212AE32BE3648F00D7E928 /* BowlingSetupWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1212AE22BE3648F00D7E928 /* BowlingSetupWorker.swift */; };
 		C1212AE52BE365AE00D7E928 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1212AE42BE365AE00D7E928 /* Match.swift */; };
+		C12FD6282BE668D50029730D /* ScoringInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FD6272BE668D50029730D /* ScoringInteractor.swift */; };
+		C12FD62A2BE66A120029730D /* ScoringWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FD6292BE66A120029730D /* ScoringWorker.swift */; };
+		C12FD62C2BE66A6B0029730D /* ScoringPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FD62B2BE66A6B0029730D /* ScoringPresenter.swift */; };
 		C13405422BE484D000D894BA /* ScoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13405412BE484D000D894BA /* ScoringViewController.swift */; };
 		C13405442BE5059C00D894BA /* ScoringModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13405432BE5059C00D894BA /* ScoringModel.swift */; };
 		C13405462BE5063A00D894BA /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13405452BE5063A00D894BA /* Ball.swift */; };
@@ -42,6 +45,9 @@
 		C1212AE02BE3646B00D7E928 /* BowlingSetupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlingSetupPresenter.swift; sourceTree = "<group>"; };
 		C1212AE22BE3648F00D7E928 /* BowlingSetupWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlingSetupWorker.swift; sourceTree = "<group>"; };
 		C1212AE42BE365AE00D7E928 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		C12FD6272BE668D50029730D /* ScoringInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringInteractor.swift; sourceTree = "<group>"; };
+		C12FD6292BE66A120029730D /* ScoringWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringWorker.swift; sourceTree = "<group>"; };
+		C12FD62B2BE66A6B0029730D /* ScoringPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringPresenter.swift; sourceTree = "<group>"; };
 		C13405412BE484D000D894BA /* ScoringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringViewController.swift; sourceTree = "<group>"; };
 		C13405432BE5059C00D894BA /* ScoringModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringModel.swift; sourceTree = "<group>"; };
 		C13405452BE5063A00D894BA /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
@@ -89,6 +95,9 @@
 			children = (
 				C13405412BE484D000D894BA /* ScoringViewController.swift */,
 				C13405432BE5059C00D894BA /* ScoringModel.swift */,
+				C12FD6272BE668D50029730D /* ScoringInteractor.swift */,
+				C12FD6292BE66A120029730D /* ScoringWorker.swift */,
+				C12FD62B2BE66A6B0029730D /* ScoringPresenter.swift */,
 			);
 			path = Scoring;
 			sourceTree = "<group>";
@@ -264,12 +273,15 @@
 				C13405422BE484D000D894BA /* ScoringViewController.swift in Sources */,
 				C1212ADD2BE363C600D7E928 /* BowlingSetupModel.swift in Sources */,
 				C143660C2BE3514C00FBEB28 /* BowlingSetupViewController.swift in Sources */,
+				C12FD6282BE668D50029730D /* ScoringInteractor.swift in Sources */,
 				C1212ADB2BE3579E00D7E928 /* MatchHistoryRouter.swift in Sources */,
 				C1659EC32BDFC4DF00D9A360 /* AppDelegate.swift in Sources */,
 				C1212AE52BE365AE00D7E928 /* Match.swift in Sources */,
+				C12FD62A2BE66A120029730D /* ScoringWorker.swift in Sources */,
 				C1659EC52BDFC4DF00D9A360 /* SceneDelegate.swift in Sources */,
 				C1F803E62BE0C57F0005C784 /* BattingSetupPresenter.swift in Sources */,
 				C13405462BE5063A00D894BA /* Ball.swift in Sources */,
+				C12FD62C2BE66A6B0029730D /* ScoringPresenter.swift in Sources */,
 				C1212ADF2BE3645A00D7E928 /* BowlingSetupInteractor.swift in Sources */,
 				C1F803EE2BE0CAB10005C784 /* Team.swift in Sources */,
 				C13405442BE5059C00D894BA /* ScoringModel.swift in Sources */,

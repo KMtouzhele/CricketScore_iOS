@@ -37,6 +37,10 @@ struct ScoringModel {
             let runsLost: String
             let ballsDelivered: String
         }
+        struct teamPlayers {
+            let batterNames: [String: String]
+            let bowlerNames: [String: String]
+        }
         struct error {
             let errorMessage: String
         }

@@ -56,7 +56,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Batting Team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIx-eV-VX6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🏏 Batting Team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIx-eV-VX6">
                                 <rect key="frame" x="24" y="111" width="345" height="33.666666666666657"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
@@ -220,8 +220,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⚾️Bowling Team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zc6-2F-ycr">
-                                <rect key="frame" x="24" y="111" width="199.33333333333334" height="33.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⚾️ Bowling Team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zc6-2F-ycr">
+                                <rect key="frame" x="24" y="111" width="205.66666666666666" height="33.666666666666657"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -643,6 +643,9 @@
                                                 <rect key="frame" x="179.66666666666663" y="0.0" width="165.33333333333337" height="34.333333333333336"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Select Extra Types"/>
+                                                <connections>
+                                                    <action selector="selectExtras:" destination="NLn-T1-Lcj" eventType="touchUpInside" id="6v7-xq-R3B"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -677,10 +680,22 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Scoring" selectedImage="pencil" catalog="system" id="c3Q-Mi-FLp"/>
                     <connections>
+                        <outlet property="ballsDelivered" destination="ZSk-nc-NVc" id="3AB-2b-Rt0"/>
+                        <outlet property="ballsFacedNonStriker" destination="nQS-b5-vcw" id="MKS-or-OrX"/>
+                        <outlet property="ballsFacedStriker" destination="kUH-jr-ZLX" id="NXr-AB-qYk"/>
+                        <outlet property="fourNonStriker" destination="YaW-Si-QRh" id="jix-q5-Fbe"/>
+                        <outlet property="fourStriker" destination="8rg-Og-aaa" id="Kaw-Z3-fgI"/>
                         <outlet property="pickerView" destination="DyR-xG-QKw" id="aQY-eL-gBW"/>
+                        <outlet property="runsLost" destination="qI8-X0-nDQ" id="xBo-Bb-kVb"/>
+                        <outlet property="runsNonStriker" destination="PPp-7A-Bfl" id="89n-ER-Cxs"/>
+                        <outlet property="runsStriker" destination="e9J-Ec-a5U" id="0ck-cT-sT1"/>
                         <outlet property="runsTextField" destination="fbJ-35-IfB" id="bRy-S3-wRt"/>
                         <outlet property="selectBoundaries" destination="xoe-kW-632" id="PvL-BR-1JL"/>
+                        <outlet property="selectExtras" destination="2uY-Kt-ZDo" id="pEM-D7-Npc"/>
                         <outlet property="selectWicket" destination="iVx-Y2-LPy" id="43o-dP-1VH"/>
+                        <outlet property="sixNonStriker" destination="x5c-DV-j85" id="Ooc-lF-4Uw"/>
+                        <outlet property="sixStriker" destination="iJf-AH-2AI" id="eRr-sx-rF1"/>
+                        <outlet property="totalWickets" destination="i6V-d8-KK6" id="RN6-Eo-wUO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mSD-mG-Mie" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
