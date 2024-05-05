@@ -724,6 +724,7 @@
                         <outlet property="selectWicket" destination="iVx-Y2-LPy" id="43o-dP-1VH"/>
                         <outlet property="sixNonStriker" destination="x5c-DV-j85" id="Ooc-lF-4Uw"/>
                         <outlet property="sixStriker" destination="iJf-AH-2AI" id="eRr-sx-rF1"/>
+                        <outlet property="stepper" destination="jzT-xT-5HA" id="Uig-zA-Qe3"/>
                         <outlet property="totalWickets" destination="i6V-d8-KK6" id="RN6-Eo-wUO"/>
                     </connections>
                 </viewController>

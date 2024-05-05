@@ -10,6 +10,7 @@ import UIKit
 
 protocol ScoringBusinessLogic {
     func getTeamPlayers(battingTeamId: String, bowlingTeamId: String, completion: @escaping () -> Void)
+    func addBall(ballRequest: ScoringModel.Request.ballRequest, scoreRequest: ScoringModel.Request.scoreRequest)
 }
 
 enum PickerType {
@@ -38,7 +39,7 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
     var striker: String?
     var nonStriker: String?
     var bowler: String?
-    var runs: Int?
+    var runs: Int = 0
     var result: ballType = .runs
     
     let boundaries = ["4s", "6s"]
@@ -90,17 +91,17 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
     }
     
     func displayScoreBoard(viewModel: ScoringModel.ViewModel.score) {
-        runsStriker.text = viewModel.runsStriker
-        ballsFacedStriker.text = viewModel.ballsFacedStriker
-        fourStriker.text = viewModel.foursStriker
-        sixStriker.text = viewModel.sixsStriker
-        runsNonStriker.text = viewModel.runsNonStriker
-        ballsFacedNonStriker.text = viewModel.ballsNonFacedStriker
-        fourNonStriker.text = viewModel.foursNonStriker
-        sixNonStriker.text = viewModel.sixsNonStriker
-        totalWickets.text = viewModel.wickets
-        runsLost.text = viewModel.runsLost
-        ballsDelivered.text = viewModel.ballsDelivered
+        runsStriker.text = String(viewModel.runsStriker)
+        ballsFacedStriker.text = String(viewModel.ballsFacedStriker)
+        fourStriker.text = String(viewModel.foursStriker)
+        sixStriker.text = String(viewModel.sixsStriker)
+        runsNonStriker.text = String(viewModel.runsNonStriker)
+        ballsFacedNonStriker.text = String(viewModel.ballsFacedNonStriker)
+        fourNonStriker.text = String(viewModel.foursNonStriker)
+        sixNonStriker.text = String(viewModel.sixsNonStriker)
+        totalWickets.text = String(viewModel.wickets)
+        runsLost.text = String(viewModel.runsLost)
+        ballsDelivered.text = String(viewModel.ballsDelivered)
     }
     
     func updateBtnConfirmStatus(){
@@ -113,6 +114,49 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
     
     @IBOutlet weak var btnConfirm: UIButton!
     @IBAction func btnConfirm(_ sender: UIButton) {
+        self.runs = Int(stepper.value)
+        let ballRequest = ScoringModel.Request.ballRequest(
+            matchId: self.matchId!,
+            battingTeamId: self.battingTeamId!,
+            bowlingTeamId: self.bowlingTeamId!,
+            striker: self.striker!,
+            nonStriker: self.nonStriker!,
+            bowler: self.bowler!,
+            runs: Int(stepper.value),
+            result: self.result
+        )
+        let runsStrikerValue = Int(runsStriker.text!)
+        let ballsFacedStrikerValue = Int(ballsFacedStriker.text!)
+        let foursStrikerValue = Int(fourStriker.text!)
+        let sixesStrikerValue = Int(sixStriker.text!)
+        let runsNonStrikerValue = Int(runsNonStriker.text!)
+        let ballsFacedNonStrikerValue = Int(ballsFacedNonStriker.text!)
+        let foursNonStrikerValue = Int(fourNonStriker.text!)
+        let sixesNonStrikerValue = Int(sixNonStriker.text!)
+        let wicketsValue = Int(totalWickets.text!)
+        let runsLostValue = Int(runsLost.text!)
+        let ballsDeliveredValue = Int(ballsDelivered.text!)
+
+        let scoreRequest = ScoringModel.Request.scoreRequest(
+            runsStriker: runsStrikerValue!,
+            ballsFacedStriker: ballsFacedStrikerValue!,
+            foursStriker: foursStrikerValue!,
+            sixsStriker: sixesStrikerValue!,
+            runsNonStriker: runsNonStrikerValue!,
+            ballsFacedNonStriker: ballsFacedNonStrikerValue!,
+            foursNonStriker: foursNonStrikerValue!,
+            sixsNonStriker: sixesNonStrikerValue!,
+            wickets: wicketsValue!,
+            runsLost: runsLostValue!,
+            ballsDelivered: ballsDeliveredValue!
+        )
+        print("This ball gets \(ballRequest.runs) runs")
+        interactor?.addBall(ballRequest: ballRequest, scoreRequest: scoreRequest)
+        extraDiselected()
+        boundaryDiselected()
+        wicketDiselected()
+        stepper.value = 0
+        result = .runs
     }
     @IBAction func btnReset(_ sender: UIButton) {
         extraDiselected()
@@ -167,8 +211,10 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var runsTextField: UITextField!
     
+    
+    @IBOutlet weak var stepper: UIStepper!
     @IBAction func stepperTapped(_ sender: UIStepper) {
-        runsTextField.text = "\(sender.value)"
+        runsTextField.text = "\(Int(sender.value))"
     }
     
     //ScoreBoard View Items
@@ -225,7 +271,11 @@ extension ScoringViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         switch currentPickerType {
         case .boundaries:
             selectBoundaries.setTitle(boundaries[row], for: .normal)
-            self.result = ballType.boundaries
+            switch boundaries[row] {
+            case "4s": self.result = ballType.fourBoundary
+            case "6s": self.result = ballType.sixBoundary
+            default: self.result = ballType.empty
+            }
             boundarySelected()
             wicketDiselected()
             extraDiselected()
@@ -243,7 +293,7 @@ extension ScoringViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             case "Hit Wicket": self.result = ballType.hitWicket
             case "Run Out": self.result = ballType.runOut
             case "Stumping": self.result = ballType.stumping
-            default: self.result = ballType.emptyWicket
+            default: self.result = ballType.empty
             }
             boundaryDiselected()
             extraDiselected()
@@ -256,7 +306,7 @@ extension ScoringViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             switch extras[row] {
             case "No Ball": self.result = ballType.noBall
             case "Wide": self.result = ballType.wide
-            default: self.result = ballType.emptyExtra
+            default: self.result = ballType.empty
             }
             boundaryDiselected()
             wicketDiselected()

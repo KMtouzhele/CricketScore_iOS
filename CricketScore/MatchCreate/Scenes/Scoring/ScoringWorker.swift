@@ -25,7 +25,20 @@ class ScoringWorker: RetrievePlayersFromFirestore, BallToFirestore {
     }
     
     func addBallToFirestore(response: ScoringModel.Response.bassResponse) {
-        return
+        let ball = response.ball
+        let db = Firestore.firestore()
+        let ballsCollection = db.collection("balls")
+        do {
+            try ballsCollection.addDocument(from: ball) { (err) in
+                if let err = err {
+                    print("Error adding ball document: \(err)")
+                } else {
+                    print("Successfully created ball.")
+                }
+            }
+        } catch let error {
+            print("Error writing ball to Firestore: \(error)")
+        }
     }
     
     func getPlayersByTeamId(teamId: String, completion: @escaping([String : String]?, Error?) -> Void) {

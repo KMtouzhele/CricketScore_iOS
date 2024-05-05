@@ -21,7 +21,8 @@ struct Ball: Codable {
 
 enum ballType: String, Codable {
     case runs
-    case boundaries
+    case fourBoundary
+    case sixBoundary
     case bowled
     case caught
     case caughtBowled
@@ -29,8 +30,7 @@ enum ballType: String, Codable {
     case hitWicket
     case runOut
     case stumping
-    case emptyWicket
     case noBall
     case wide
-    case emptyExtra
+    case empty
 }

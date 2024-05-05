@@ -16,11 +16,14 @@ protocol RetrievePlayersFromFirestore {
 }
 
 protocol PresentSocreBoard {
-    //func assembleScoreViewModel(response: ScoringModel.Response.bassResponse) -> ScoringModel.ViewModel.score
+    func assembleScoreViewModel(request: ScoringModel.Request.scoreRequest, response: ScoringModel.Response.bassResponse)
+    func swapBattersScore(request: ScoringModel.Request.scoreRequest)
     func assembleTeamPlayersViewModel(response: ScoringModel.Response.playersResponse)
 }
 
 class ScoringInteractor : ScoringBusinessLogic {
+
+    
     let worker = ScoringWorker()
     var presenter: PresentSocreBoard?
     init(presenter: ScoringPresenter){
@@ -31,11 +34,46 @@ class ScoringInteractor : ScoringBusinessLogic {
         DispatchQueue.global().async {
             let battingTeamDictionary = self.worker.getPlayers(teamId: battingTeamId)
             let bowlingTeamDictionary = self.worker.getPlayers(teamId: bowlingTeamId)
-            let response = ScoringModel.Response.playersResponse(batterNames: battingTeamDictionary, bowlerNames: bowlingTeamDictionary)
+            let response = ScoringModel.Response.playersResponse(
+                batterNames: battingTeamDictionary,
+                bowlerNames: bowlingTeamDictionary
+            )
             DispatchQueue.main.async {
                 self.presenter?.assembleTeamPlayersViewModel(response: response)
                 completion()
             }
         }
     }
+    
+    func addBall(
+        ballRequest: ScoringModel.Request.ballRequest,
+        scoreRequest: ScoringModel.Request.scoreRequest
+    ) {
+        let response = ScoringModel.Response.bassResponse(
+            ball: Ball(
+                matchId: ballRequest.matchId,
+                striker: ballRequest.striker,
+                nonStriker: ballRequest.nonStriker,
+                bowler: ballRequest.bowler,
+                runs: ballRequest.runs,
+                isBallDelivered: isBallDelivered(request: ballRequest),
+                result: ballRequest.result
+            )
+        )
+        worker.addBallToFirestore(response: response)
+        presenter?.assembleScoreViewModel(request: scoreRequest, response: response)
+        
+//        if ballRequest.runs % 2 == 1 {
+//            presenter?.swapBattersScore(request: scoreRequest)
+//        }
+    }
+    
+    func isBallDelivered(request: ScoringModel.Request.ballRequest) -> Bool {
+        if request.result == ballType.noBall || request.result == ballType.wide {
+            return false
+        } else {
+            return true
+        }
+    }
+    
 }

@@ -9,8 +9,25 @@ import Foundation
 
 struct ScoringModel {
     struct Request {
-        let battingTeamId, bowlingTeamId: String
-        
+        struct ballRequest{
+            let matchId, battingTeamId, bowlingTeamId: String
+            let striker, nonStriker, bowler: String
+            let runs: Int
+            let result: ballType
+        }
+        struct scoreRequest {
+            let runsStriker: Int
+            let ballsFacedStriker: Int
+            let foursStriker: Int
+            let sixsStriker: Int
+            let runsNonStriker: Int
+            let ballsFacedNonStriker: Int
+            let foursNonStriker: Int
+            let sixsNonStriker: Int
+            let wickets: Int
+            let runsLost: Int
+            let ballsDelivered: Int
+        }
     }
     
     struct Response {
@@ -25,17 +42,17 @@ struct ScoringModel {
     
     struct ViewModel {
         struct score {
-            let runsStriker: String
-            let ballsFacedStriker: String
-            let foursStriker: String
-            let sixsStriker: String
-            let runsNonStriker: String
-            let ballsNonFacedStriker: String
-            let foursNonStriker: String
-            let sixsNonStriker: String
-            let wickets: String
-            let runsLost: String
-            let ballsDelivered: String
+            let runsStriker: Int
+            let ballsFacedStriker: Int
+            let foursStriker: Int
+            let sixsStriker: Int
+            let runsNonStriker: Int
+            let ballsFacedNonStriker: Int
+            let foursNonStriker: Int
+            let sixsNonStriker: Int
+            let wickets: Int
+            let runsLost: Int
+            let ballsDelivered: Int
         }
         struct teamPlayers {
             let batterNames: [String: String]
