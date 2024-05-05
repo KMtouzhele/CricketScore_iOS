@@ -27,10 +27,15 @@ class ScoringInteractor : ScoringBusinessLogic {
         self.presenter = presenter
     }
     
-    func getTeamPlayers(battingTeamId: String, bowlingTeamId: String){
-        let battingTeamDictionary = worker.getPlayers(teamId: battingTeamId)
-        let bowlingTeamDictionary = worker.getPlayers(teamId: bowlingTeamId)
-        let response = ScoringModel.Response.playersResponse(batterNames: battingTeamDictionary, bowlerNames: bowlingTeamDictionary)
-        presenter?.assembleTeamPlayersViewModel(response: response)
+    func getTeamPlayers(battingTeamId: String, bowlingTeamId: String, completion: @escaping () -> Void){
+        DispatchQueue.global().async {
+            let battingTeamDictionary = self.worker.getPlayers(teamId: battingTeamId)
+            let bowlingTeamDictionary = self.worker.getPlayers(teamId: bowlingTeamId)
+            let response = ScoringModel.Response.playersResponse(batterNames: battingTeamDictionary, bowlerNames: bowlingTeamDictionary)
+            DispatchQueue.main.async {
+                self.presenter?.assembleTeamPlayersViewModel(response: response)
+                completion()
+            }
+        }
     }
 }

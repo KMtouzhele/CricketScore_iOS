@@ -28,6 +28,9 @@ enum ballType: String, Codable {
     case lbw
     case hitWicket
     case runOut
+    case stumping
+    case emptyWicket
     case noBall
     case wide
+    case emptyExtra
 }
