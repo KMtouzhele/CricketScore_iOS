@@ -66,4 +66,28 @@ class ScoringWorker: RetrievePlayersFromFirestore, BallToFirestore {
             completion(playersDictionary, nil)
         }
     }
+    
+    func updatePlayerStatusToFirestore(playerId: String, playerStatus: playerStatus) {
+        let db = Firestore.firestore()
+        let playerDoc = db.collection("players").document(playerId)
+        
+        let statusString : String
+        switch playerStatus {
+        case .available:
+            statusString = "available"
+        case.dismissed:
+            statusString = "dismissed"
+        case .playing:
+            statusString = "playing"
+        }
+        let newStatus = ["status" : statusString ]
+        
+        playerDoc.updateData(newStatus) { error in
+            if let error = error {
+                print("Error updating player document \(error)")
+            } else {
+                print("Successfully updated player to \(playerStatus)")
+            }
+        }
+    }
 }

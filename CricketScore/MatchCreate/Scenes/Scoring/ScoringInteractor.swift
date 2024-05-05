@@ -17,7 +17,6 @@ protocol RetrievePlayersFromFirestore {
 
 protocol PresentSocreBoard {
     func assembleScoreViewModel(request: ScoringModel.Request.scoreRequest, response: ScoringModel.Response.bassResponse)
-    func swapBattersScore(request: ScoringModel.Request.scoreRequest)
     func assembleTeamPlayersViewModel(response: ScoringModel.Response.playersResponse)
 }
 
@@ -52,9 +51,9 @@ class ScoringInteractor : ScoringBusinessLogic {
         let response = ScoringModel.Response.bassResponse(
             ball: Ball(
                 matchId: ballRequest.matchId,
-                striker: ballRequest.striker,
-                nonStriker: ballRequest.nonStriker,
-                bowler: ballRequest.bowler,
+                striker: ballRequest.strikerId,
+                nonStriker: ballRequest.nonStrikerId,
+                bowler: ballRequest.bowlerId,
                 runs: ballRequest.runs,
                 isBallDelivered: isBallDelivered(request: ballRequest),
                 result: ballRequest.result
@@ -62,10 +61,33 @@ class ScoringInteractor : ScoringBusinessLogic {
         )
         worker.addBallToFirestore(response: response)
         presenter?.assembleScoreViewModel(request: scoreRequest, response: response)
+        updatePlayerStatus(ballRequest: ballRequest, scoreRequest: scoreRequest)
+    }
+    
+    func updatePlayerStatus(ballRequest: ScoringModel.Request.ballRequest, scoreRequest: ScoringModel.Request.scoreRequest) {
+        let strikerId = ballRequest.strikerId
+        let nonStrikerId = ballRequest.nonStrikerId
+        let bowlerId = ballRequest.bowlerId
+        if (ballRequest.result == .bowled ||
+            ballRequest.result == .caught ||
+            ballRequest.result == .caughtBowled ||
+            ballRequest.result == .hitWicket ||
+            ballRequest.result == .lbw ||
+            ballRequest.result == .runOut ||
+            ballRequest.result == .stumping
+        ) {
+            worker.updatePlayerStatusToFirestore(playerId: strikerId, playerStatus: .dismissed)
+        } else {
+            worker.updatePlayerStatusToFirestore(playerId: strikerId, playerStatus: .playing)
+        }
         
-//        if ballRequest.runs % 2 == 1 {
-//            presenter?.swapBattersScore(request: scoreRequest)
-//        }
+        if scoreRequest.overCalculator == 5 && (ballRequest.result != .noBall || ballRequest.result != .wide){
+            worker.updatePlayerStatusToFirestore(playerId: nonStrikerId, playerStatus: .dismissed)
+        } else {
+            worker.updatePlayerStatusToFirestore(playerId: nonStrikerId, playerStatus: .playing)
+        }
+        
+        worker.updatePlayerStatusToFirestore(playerId: bowlerId, playerStatus: .playing)
     }
     
     func isBallDelivered(request: ScoringModel.Request.ballRequest) -> Bool {
@@ -75,5 +97,4 @@ class ScoringInteractor : ScoringBusinessLogic {
             return true
         }
     }
-    
 }

@@ -36,11 +36,12 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
     var interactor: ScoringBusinessLogic?
     var presenter = ScoringPresenter()
     
-    var striker: String?
-    var nonStriker: String?
-    var bowler: String?
+    var strikerId: String?
+    var nonStrikerId: String?
+    var bowlerId: String?
     var runs: Int = 0
     var result: ballType = .runs
+    var overCalculator : Int = 0
     
     let boundaries = ["4s", "6s"]
     let wickets = ["Bowled", "Caught", "Caught&Bowled", "LBW", "Hit Wicket", "Run Out", "Stumping"]
@@ -50,6 +51,7 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("OverCalculator: \(overCalculator)")
         self.btnConfirm.isEnabled = false
         self.interactor = ScoringInteractor(presenter: self.presenter)
         self.presenter.viewController = self
@@ -91,6 +93,16 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
     }
     
     func displayScoreBoard(viewModel: ScoringModel.ViewModel.score) {
+        overCalculator = viewModel.overCalculator
+        strikerId = viewModel.strikerId
+        nonStrikerId = viewModel.nonStrikerId
+
+        let strikerName = battingTeamDic![strikerId!]
+        let nonStrikerNamr = battingTeamDic![nonStrikerId!]
+        
+        selectStriker.setTitle(strikerName, for: .normal)
+        selectNonStriker.setTitle(nonStrikerNamr, for: .normal)
+        
         runsStriker.text = String(viewModel.runsStriker)
         ballsFacedStriker.text = String(viewModel.ballsFacedStriker)
         fourStriker.text = String(viewModel.foursStriker)
@@ -105,7 +117,7 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
     }
     
     func updateBtnConfirmStatus(){
-        if striker != nil && nonStriker != nil {
+        if strikerId != nil && nonStrikerId != nil {
             btnConfirm.isEnabled = true
         } else {
             btnConfirm.isEnabled = false
@@ -119,9 +131,9 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
             matchId: self.matchId!,
             battingTeamId: self.battingTeamId!,
             bowlingTeamId: self.bowlingTeamId!,
-            striker: self.striker!,
-            nonStriker: self.nonStriker!,
-            bowler: self.bowler!,
+            strikerId: self.strikerId!,
+            nonStrikerId: self.nonStrikerId!,
+            bowlerId: self.bowlerId!,
             runs: Int(stepper.value),
             result: self.result
         )
@@ -138,6 +150,9 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
         let ballsDeliveredValue = Int(ballsDelivered.text!)
 
         let scoreRequest = ScoringModel.Request.scoreRequest(
+            overCalculator: overCalculator,
+            strikerId: strikerId!,
+            nonStrikerId: nonStrikerId!,
             runsStriker: runsStrikerValue!,
             ballsFacedStriker: ballsFacedStrikerValue!,
             foursStriker: foursStrikerValue!,
@@ -156,7 +171,9 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
         boundaryDiselected()
         wicketDiselected()
         stepper.value = 0
+        runsTextField.text = String(Int(stepper.value))
         result = .runs
+        print("OverCalculater: \(overCalculator)")
     }
     @IBAction func btnReset(_ sender: UIButton) {
         extraDiselected()
@@ -318,38 +335,38 @@ extension ScoringViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             if let selectedStrikerName = battingNamesArray?[row]{
                 for (key, value) in battingTeamDic ?? [:] {
                     if value == selectedStrikerName {
-                        self.striker = key
+                        self.strikerId = key
                         break
                     }
                 }
             }
             updateBtnConfirmStatus()
-            print("Selected Batter: \(String(describing: self.striker))")
+            print("Selected Batter: \(String(describing: self.strikerId))")
             
         case .nonStriker:
             selectNonStriker.setTitle(battingNamesArray![row], for: .normal)
             if let selectedNonStrikerName = battingNamesArray?[row]{
                 for (key, value) in battingTeamDic ?? [:] {
                     if value == selectedNonStrikerName {
-                        self.nonStriker = key
+                        self.nonStrikerId = key
                         break
                     }
                 }
             }
             updateBtnConfirmStatus()
-            print("Selected Batter: \(String(describing: self.nonStriker))")
+            print("Selected Batter: \(String(describing: self.nonStrikerId))")
         case .bowler:
             selectBowler.setTitle(bowlingNamesArray![row], for: .normal)
             if let selectedBowlerName = bowlingNamesArray?[row]{
                 for (key, value) in bowlingTeamDic ?? [:] {
                     if value == selectedBowlerName {
-                        self.bowler = key
+                        self.bowlerId = key
                         break
                     }
                 }
             }
             updateBtnConfirmStatus()
-            print("Selected Bowler: \(String(describing: self.bowler))")
+            print("Selected Bowler: \(String(describing: self.bowlerId))")
         }
         pickerView.isHidden = true
     }

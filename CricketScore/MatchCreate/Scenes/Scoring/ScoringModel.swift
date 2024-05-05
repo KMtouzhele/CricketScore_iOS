@@ -11,11 +11,14 @@ struct ScoringModel {
     struct Request {
         struct ballRequest{
             let matchId, battingTeamId, bowlingTeamId: String
-            let striker, nonStriker, bowler: String
+            let strikerId, nonStrikerId, bowlerId: String
             let runs: Int
             let result: ballType
         }
         struct scoreRequest {
+            let overCalculator: Int
+            let strikerId: String
+            let nonStrikerId: String
             let runsStriker: Int
             let ballsFacedStriker: Int
             let foursStriker: Int
@@ -42,6 +45,9 @@ struct ScoringModel {
     
     struct ViewModel {
         struct score {
+            let overCalculator: Int
+            let strikerId: String
+            let nonStrikerId: String
             let runsStriker: Int
             let ballsFacedStriker: Int
             let foursStriker: Int
