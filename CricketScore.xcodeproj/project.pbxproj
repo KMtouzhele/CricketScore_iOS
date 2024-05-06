@@ -26,6 +26,7 @@
 		C1659ECA2BDFC4DF00D9A360 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C1659EC92BDFC4DF00D9A360 /* Base */; };
 		C1659ECC2BDFC4E000D9A360 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1659ECB2BDFC4E000D9A360 /* Assets.xcassets */; };
 		C1659ECF2BDFC4E000D9A360 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C1659ECE2BDFC4E000D9A360 /* Base */; };
+		C1A92C322BE8E0B30072EF7C /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A92C312BE8E0B30072EF7C /* SummaryViewController.swift */; };
 		C1CC86772BE0A3A000B1D64C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C1CC86762BE0A3A000B1D64C /* FirebaseFirestoreSwift */; };
 		C1CC86792BE0A3AD00B1D64C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1CC86782BE0A3AD00B1D64C /* GoogleService-Info.plist */; };
 		C1F803E22BE0C4C30005C784 /* BattingSetupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F803E12BE0C4C30005C784 /* BattingSetupModel.swift */; };
@@ -59,6 +60,7 @@
 		C1659ECB2BDFC4E000D9A360 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1659ECE2BDFC4E000D9A360 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1659ED02BDFC4E000D9A360 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1A92C312BE8E0B30072EF7C /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		C1CC86782BE0A3AD00B1D64C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C1F803E12BE0C4C30005C784 /* BattingSetupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattingSetupModel.swift; sourceTree = "<group>"; };
 		C1F803E32BE0C56C0005C784 /* BattingSetupInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattingSetupInteractor.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 		C1A92C302BE8932B0072EF7C /* Summary */ = {
 			isa = PBXGroup;
 			children = (
+				C1A92C312BE8E0B30072EF7C /* SummaryViewController.swift */,
 			);
 			path = Summary;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				C1212ADB2BE3579E00D7E928 /* MatchHistoryRouter.swift in Sources */,
 				C1659EC32BDFC4DF00D9A360 /* AppDelegate.swift in Sources */,
 				C1212AE52BE365AE00D7E928 /* Match.swift in Sources */,
+				C1A92C322BE8E0B30072EF7C /* SummaryViewController.swift in Sources */,
 				C12FD62A2BE66A120029730D /* ScoringWorker.swift in Sources */,
 				C1659EC52BDFC4DF00D9A360 /* SceneDelegate.swift in Sources */,
 				C1F803E62BE0C57F0005C784 /* BattingSetupPresenter.swift in Sources */,
