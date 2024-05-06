@@ -305,7 +305,7 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
     @IBOutlet weak var ballsDelivered: UILabel!
     
 }
-//https://www.youtube.com/watch?v=ykycTzKXON8
+
 extension ScoringViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
