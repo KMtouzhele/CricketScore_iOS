@@ -18,6 +18,8 @@ protocol RetrievePlayersFromFirestore {
 protocol PresentSocreBoard {
     func assembleScoreViewModel(request: ScoringModel.Request.scoreRequest, response: ScoringModel.Response.bassResponse)
     func assembleTeamPlayersViewModel(response: ScoringModel.Response.playersResponse)
+    func presentDefaultBowlerSelection(ballRequest: ScoringModel.Request.ballRequest)
+    func presentDefaultStrikerSelection(ballRequest: ScoringModel.Request.ballRequest)
 }
 
 class ScoringInteractor : ScoringBusinessLogic {
@@ -77,12 +79,14 @@ class ScoringInteractor : ScoringBusinessLogic {
             ballRequest.result == .stumping
         ) {
             worker.updatePlayerStatusToFirestore(playerId: strikerId, playerStatus: .dismissed)
+            presenter?.presentDefaultStrikerSelection(ballRequest: ballRequest)
         } else {
             worker.updatePlayerStatusToFirestore(playerId: strikerId, playerStatus: .playing)
         }
         
         if scoreRequest.overCalculator == 5 && (ballRequest.result != .noBall || ballRequest.result != .wide){
             worker.updatePlayerStatusToFirestore(playerId: nonStrikerId, playerStatus: .dismissed)
+            presenter?.presentDefaultBowlerSelection(ballRequest: ballRequest)
         } else {
             worker.updatePlayerStatusToFirestore(playerId: nonStrikerId, playerStatus: .playing)
         }

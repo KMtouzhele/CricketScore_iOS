@@ -102,4 +102,19 @@ class ScoringPresenter: PresentSocreBoard {
         viewController?.bowlingTeamDic = bowlersDictionary
     }
     
+    func presentDefaultStrikerSelection(ballRequest: ScoringModel.Request.ballRequest){
+        viewController?.setDefaultStrikerSelection()
+        viewController?.initializeStrikerScore()
+        let strikerDismissed = ballRequest.strikerId
+        viewController?.removeStrikerFromDic(strikerId: strikerDismissed)
+    }
+    
+    func presentDefaultBowlerSelection(ballRequest: ScoringModel.Request.ballRequest){
+        viewController?.setDefaultBowlerSelection()
+        viewController?.initializeBowlerScore()
+        let bowlerDismissed = ballRequest.bowlerId
+        viewController?.removeBowlerFromDic(bowlerId: bowlerDismissed)
+        viewController?.overCalculator = 0
+    }
+    
 }

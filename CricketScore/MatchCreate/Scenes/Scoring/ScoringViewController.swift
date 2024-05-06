@@ -57,22 +57,26 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
         self.presenter.viewController = self
         self.interactor?.getTeamPlayers(battingTeamId: self.battingTeamId!, bowlingTeamId: self.bowlingTeamId!) { [weak self] in
             self?.initializeViewStatus()
+            self?.convertDicToArray()
             
-            guard let battingTeamDic = self?.battingTeamDic else {
-                print("BattingTeamDic is nil")
-                return
-            }
-            self?.battingNamesArray = Array(battingTeamDic.values)
-            
-            guard let bowlingTeamDic = self?.bowlingTeamDic else {
-                print("BowlingTeamDic is nil")
-                return
-            }
-            self?.bowlingNamesArray = Array(bowlingTeamDic.values)
             
             self?.enableButtons()
             
         }
+    }
+    
+    func convertDicToArray(){
+        guard let battingTeamDic = self.battingTeamDic else {
+            print("BattingTeamDic is nil")
+            return
+        }
+        self.battingNamesArray = Array(battingTeamDic.values)
+        
+        guard let bowlingTeamDic = self.bowlingTeamDic else {
+            print("BowlingTeamDic is nil")
+            return
+        }
+        self.bowlingNamesArray = Array(bowlingTeamDic.values)
     }
     
     func updatePickerView() {
@@ -81,8 +85,11 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
     }
 
     func initializeViewStatus(){
-        selectStriker.setTitle("Striker", for: .normal)
-        runsTextField.text = "0"
+        setDefaultStrikerSelection()
+        setDefaultNonStrikerSelection()
+        setDefaultBowlerSelection()
+        stepper.value = 0
+        runsTextField.text = String(Int(stepper.value))
         pickerView.isHidden = true
     }
     
@@ -117,11 +124,53 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
     }
     
     func updateBtnConfirmStatus(){
-        if strikerId != nil && nonStrikerId != nil {
+        if strikerId != nil && nonStrikerId != nil && bowlerId != nil {
             btnConfirm.isEnabled = true
         } else {
             btnConfirm.isEnabled = false
         }
+    }
+    
+    func setDefaultStrikerSelection(){
+        selectStriker.setTitle("Striker", for: .normal)
+        strikerId = nil
+    }
+    
+    func setDefaultNonStrikerSelection(){
+        selectNonStriker.setTitle("Non-Striker", for: .normal)
+        nonStrikerId = nil
+    }
+    
+    func setDefaultBowlerSelection(){
+        selectBowler.setTitle("Bowler", for: .normal)
+        bowlerId = nil
+    }
+    
+    func initializeStrikerScore(){
+        runsStriker.text = "0"
+        ballsFacedStriker.text = "0"
+        fourStriker.text = "0"
+        sixStriker.text = "0"
+    }
+    
+    func initializeBowlerScore(){
+        totalWickets.text = "0"
+        runsLost.text = "0"
+        ballsDelivered.text = "0"
+    }
+    
+    func removeStrikerFromDic(strikerId: String){
+        var dic = self.battingTeamDic
+        dic?.removeValue(forKey: strikerId)
+        self.battingTeamDic = dic
+        convertDicToArray()
+    }
+    
+    func removeBowlerFromDic(bowlerId: String){
+        var dic = self.bowlingTeamDic
+        dic?.removeValue(forKey: bowlerId)
+        self.bowlingTeamDic = dic
+        convertDicToArray()
     }
     
     @IBOutlet weak var btnConfirm: UIButton!
@@ -174,12 +223,14 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
         runsTextField.text = String(Int(stepper.value))
         result = .runs
         print("OverCalculater: \(overCalculator)")
+        updateBtnConfirmStatus()
     }
     @IBAction func btnReset(_ sender: UIButton) {
         extraDiselected()
         boundaryDiselected()
         wicketDiselected()
-        runsTextField.text = "0"
+        stepper.value = 0
+        runsTextField.text = String(Int(stepper.value))
         result = .runs
     }
     //Select Boundaries
@@ -232,6 +283,12 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
     @IBOutlet weak var stepper: UIStepper!
     @IBAction func stepperTapped(_ sender: UIStepper) {
         runsTextField.text = "\(Int(sender.value))"
+        wicketDiselected()
+        extraDiselected()
+        boundaryDiselected()
+        self.result = .runs
+        print("Ball result is \(String(describing: self.result))")
+        
     }
     
     //ScoreBoard View Items
