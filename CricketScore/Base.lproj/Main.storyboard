@@ -953,7 +953,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="mxB-vY-Pwt">
             <objects>
-                <tabBarController id="ur8-3M-JHG" sceneMemberID="viewController">
+                <tabBarController id="ur8-3M-JHG" customClass="TabBarController" customModule="CricketScore" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="DAT-1w-LMN"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hbi-oF-Peq">

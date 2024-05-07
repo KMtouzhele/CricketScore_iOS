@@ -20,7 +20,7 @@ protocol PresentSocreBoard {
     func assembleTeamPlayersViewModel(response: ScoringModel.Response.playersResponse)
     func presentDefaultBowlerSelection(ballRequest: ScoringModel.Request.ballRequest)
     func presentDefaultStrikerSelection(ballRequest: ScoringModel.Request.ballRequest)
-    func assembleSummaryViewModel(response: ScoringModel.Response.summaryResponse)
+    func presentSummaryViewModel(summaryViewModel: ScoringModel.ViewModel.summaryViewModel)
 }
 
 class ScoringInteractor : ScoringBusinessLogic {
@@ -100,20 +100,19 @@ class ScoringInteractor : ScoringBusinessLogic {
     }
     
     func updateSummaryData(
-        summaryRequest: ScoringModel.Request.summaryRequest,
+        summaryViewModel: ScoringModel.ViewModel.summaryViewModel,
         ballRequest: ScoringModel.Request.ballRequest
     ){
-        let strikerId = summaryRequest.strikerId
-        let nonStrikerId = summaryRequest.nonStrikerId
-        let bowlerId = summaryRequest.bowlerId
-        let totalWickets = summaryRequest.totalWickets
-        let totalRuns = summaryRequest.totalRuns
-        let totalExtras = summaryRequest.totalExtras
-        let currentBall = summaryRequest.currentBall
-        let currentOver = summaryRequest.currentOver
+        let strikerName = isWicket(request: ballRequest) ? "To be Selected" : summaryViewModel.strikerName
+        let nonStrikerName = summaryViewModel.nonStrikerName
+        let bowlerName = summaryViewModel.bowlerName
+        let totalWickets = summaryViewModel.totalWickets
+        let totalRuns = summaryViewModel.totalRuns
+        let totalExtras = summaryViewModel.totalExtras
+        let currentBall = summaryViewModel.currentBall
+        let currentOver = summaryViewModel.currentOver
         
         let runs = ballRequest.runs
-        let ballDelivered = isBallDelivered(request: ballRequest) ? 1 : 0
         let wicket = isWicket(request: ballRequest) ? 1 : 0
         let extra = isExtra(request: ballRequest) ? 1 : 0
         let teamRuns = isExtra(request: ballRequest) ? 1 : 0
@@ -121,33 +120,39 @@ class ScoringInteractor : ScoringBusinessLogic {
         
         var newCurrentBall: Int = 0
         var newCurrentOver: Int = 0
+        var newBowlerName: String = "To be Selected"
+        
         if !(currentBall == 5 &&
              isBallDelivered(request: ballRequest)
             ) {
             newCurrentBall = currentBall + 1
             newCurrentOver = currentOver
+            newBowlerName = bowlerName
             if isExtra(request: ballRequest) {
                 newCurrentOver = currentOver
                 newCurrentBall = currentBall
+                newBowlerName = bowlerName
             }
         } else {
             newCurrentOver = currentOver + 1
         }
         
-        let response = ScoringModel.Response.summaryResponse(
+        
+        let updatedSummaryViewModel = ScoringModel.ViewModel.summaryViewModel(
+            battingTeamId: summaryViewModel.battingTeamId,
+            bowlingTeamId: summaryViewModel.bowlingTeamId,
+            battingTeamName: "Placeholder",
+            bowlingTeamName: "Placeholder",
+            strikerName: strikerName,
+            nonStrikerName: nonStrikerName,
+            bowlerName: newBowlerName,
             totalWickets: totalWickets + wicket,
             totalRuns: totalRuns + runs + teamRuns + boundaryRuns,
             currentOver: newCurrentOver,
             currentBall: newCurrentBall,
-            totalExtras: totalExtras + extra,
-            strikerName: "PlaceHolder",
-            nonStrikerName: "PlaceHolder",
-            bowlerName: "PlaceHolder",
-            battingTeamName: "PlaceHolder",
-            bowlingTeamName: "PlaceHolder"
+            totalExtras: totalExtras + extra
         )
-        print("Update summary interactor: old wicket is \(totalWickets) and adding \(wicket)")
-        presenter?.assembleSummaryViewModel(response: response)
+        presenter?.presentSummaryViewModel(summaryViewModel: updatedSummaryViewModel)
     }
     
     private func isBallDelivered(request: ScoringModel.Request.ballRequest) -> Bool {

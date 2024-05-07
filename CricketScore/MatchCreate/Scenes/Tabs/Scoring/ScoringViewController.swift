@@ -8,10 +8,10 @@
 import Foundation
 import UIKit
 
-protocol ScoringBusinessLogic {
+protocol ScoringBusinessLogic: AnyObject {
     func getTeamPlayers(battingTeamId: String, bowlingTeamId: String, completion: @escaping () -> Void)
     func addBall(ballRequest: ScoringModel.Request.ballRequest, scoreRequest: ScoringModel.Request.scoreRequest)
-    func updateSummaryData(summaryRequest: ScoringModel.Request.summaryRequest,ballRequest: ScoringModel.Request.ballRequest)
+    func updateSummaryData(summaryViewModel: ScoringModel.ViewModel.summaryViewModel ,ballRequest: ScoringModel.Request.ballRequest)
 }
 
 enum PickerType {
@@ -24,6 +24,8 @@ enum PickerType {
 }
 
 class ScoringViewController: UIViewController, UpdateScoreBoard {
+    var tabBar: TabBarController!
+    
     //inhert from former view
     var battingTeamId: String?
     var bowlingTeamId: String?
@@ -53,27 +55,16 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
     //pickerview
     var currentPickerType: PickerType = .boundaries
     
-    //summary stores here
-    var summary = ScoringModel.Request.summaryRequest(
-        totalWickets: 0,
-        totalRuns: 0,
-        currentOver: 0,
-        currentBall: 0,
-        totalExtras: 0,
-        strikerId: "",
-        nonStrikerId: "",
-        bowlerId: "",
-        battingTeamId: "",
-        bowlingTeamId: ""
-    )
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBar = self.tabBarController as? TabBarController
         print("OverCalculator: \(overCalculator)")
         self.btnConfirm.isEnabled = false
         self.interactor = ScoringInteractor(presenter: self.presenter)
         self.presenter.scoringViewController = self
         self.interactor?.getTeamPlayers(battingTeamId: self.battingTeamId!, bowlingTeamId: self.bowlingTeamId!) { [weak self] in
+            self?.tabBar.summaryViewModel.battingTeamId = (self?.battingTeamId)!
+            self?.tabBar.summaryViewModel.bowlingTeamId = (self?.bowlingTeamId)!
             self?.initializeViewStatus()
             self?.convertDicToArray()
             self?.enableButtons()
@@ -107,16 +98,19 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
     func setDefaultStrikerSelection(){
         selectStriker.setTitle("Striker", for: .normal)
         strikerId = nil
+        updateBtnConfirmStatus()
     }
     
     func setDefaultNonStrikerSelection(){
         selectNonStriker.setTitle("Non-Striker", for: .normal)
         nonStrikerId = nil
+        updateBtnConfirmStatus()
     }
     
     func setDefaultBowlerSelection(){
         selectBowler.setTitle("Bowler", for: .normal)
         bowlerId = nil
+        updateBtnConfirmStatus()
     }
     
     func removeStrikerFromDic(strikerId: String){
@@ -229,10 +223,9 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
             runsLost: runsLostValue!,
             ballsDelivered: ballsDeliveredValue!
         )
-        print("This ball gets \(ballRequest.runs) runs")
         interactor?.addBall(ballRequest: ballRequest, scoreRequest: scoreRequest)
         
-        interactor?.updateSummaryData(summaryRequest: summary, ballRequest: ballRequest)
+        interactor?.updateSummaryData(summaryViewModel: tabBar.summaryViewModel, ballRequest: ballRequest)
         extraDiselected()
         boundaryDiselected()
         wicketDiselected()
@@ -240,14 +233,14 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
         runsTextField.text = String(Int(stepper.value))
         result = .runs
         print("OverCalculater: \(overCalculator)")
+        print("Updated summary: \(String(describing: tabBar.summaryViewModel))")
         updateBtnConfirmStatus()
     }
     @IBAction func btnReset(_ sender: UIButton) {
         extraDiselected()
         boundaryDiselected()
         wicketDiselected()
-        stepper.value = 0
-        runsTextField.text = String(Int(stepper.value))
+        initializeStepper()
         result = .runs
     }
     //Select Boundaries
@@ -368,6 +361,7 @@ extension ScoringViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             default: self.result = ballType.empty
             }
             boundarySelected()
+            initializeStepper()
             wicketDiselected()
             extraDiselected()
             updateBtnConfirmStatus()
@@ -386,6 +380,7 @@ extension ScoringViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             case "Stumping": self.result = ballType.stumping
             default: self.result = ballType.empty
             }
+            initializeStepper()
             boundaryDiselected()
             extraDiselected()
             updateBtnConfirmStatus()
@@ -399,6 +394,7 @@ extension ScoringViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             case "Wide": self.result = ballType.wide
             default: self.result = ballType.empty
             }
+            initializeStepper()
             boundaryDiselected()
             wicketDiselected()
             updateBtnConfirmStatus()
@@ -414,9 +410,8 @@ extension ScoringViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                     }
                 }
             }
-            summary.strikerId = self.strikerId ?? ""
+            tabBar.summaryViewModel.strikerName = battingTeamDic?[self.strikerId!] ?? "Not Found"
             updateBtnConfirmStatus()
-            print("Selected Striker: \(String(describing: summary.strikerId))")
             print("Selected Striker: \(String(describing: self.strikerId))")
             
         case .nonStriker:
@@ -429,9 +424,8 @@ extension ScoringViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                     }
                 }
             }
-            summary.nonStrikerId = self.nonStrikerId ?? ""
+            tabBar.summaryViewModel.nonStrikerName = battingTeamDic?[self.nonStrikerId!] ?? "Not Found"
             updateBtnConfirmStatus()
-            print("Selected NonStriker: \(String(describing: summary.nonStrikerId))")
             print("Selected NonStriker: \(String(describing: self.nonStrikerId))")
         case .bowler:
             selectBowler.setTitle(bowlingNamesArray![row], for: .normal)
@@ -443,9 +437,8 @@ extension ScoringViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                     }
                 }
             }
-            summary.bowlerId = self.bowlerId ?? ""
+            tabBar.summaryViewModel.bowlerName = bowlingTeamDic?[self.bowlerId!] ?? "Not Found"
             updateBtnConfirmStatus()
-            print("Selected Bowler: \(String(describing: summary.bowlerId))")
             print("Selected Bowler: \(String(describing: self.bowlerId))")
         }
         pickerView.isHidden = true
@@ -494,5 +487,10 @@ extension ScoringViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         selectExtras.layer.cornerRadius = 0
         selectExtras.clipsToBounds = false
         selectExtras.setTitle("Select Extras", for: .normal)
+    }
+    
+    func initializeStepper(){
+        stepper.value = 0
+        runsTextField.text = String(Int(stepper.value))
     }
 }

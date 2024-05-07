@@ -10,8 +10,6 @@ import UIKit
 
 class SummaryViewController: UIViewController {
     
-    var presenter = ScoringPresenter()
-    
     @IBOutlet weak var battingScoreLabel: UILabel!
     @IBOutlet weak var runRateLabel: UILabel!
     @IBOutlet weak var currentOverLabel: UILabel!
@@ -22,17 +20,30 @@ class SummaryViewController: UIViewController {
     @IBOutlet weak var bowlerNameLabel: UILabel!
     @IBOutlet weak var nonStrikerNameLabel: UILabel!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter.summaryViewController = self
+        if let tabBar = self.tabBarController as? TabBarController {
+            let viewModel = tabBar.summaryViewModel
+            displaySummary(viewModel: viewModel)
+        } else {
+            print("Unable to access TabBarController")
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let tabBar = self.tabBarController as? TabBarController {
+            let viewModel = tabBar.summaryViewModel
+            displaySummary(viewModel: viewModel)
+        } else {
+            print("Unable to access TabBarController")
+        }
     }
     
     func displaySummary(viewModel: ScoringModel.ViewModel.summaryViewModel){
-        battingScoreLabel.text = viewModel.battingTeamScore
-        runRateLabel.text = viewModel.RunRate
-        currentOverLabel.text = viewModel.currentOver
-        extrasLabel.text = viewModel.TotalExtras
+        battingScoreLabel.text = "\(viewModel.totalWickets) / \(viewModel.totalRuns)"
+        runRateLabel.text = "Placeholder"
+        currentOverLabel.text = "\(viewModel.currentOver) . \(viewModel.currentBall)"
+        extrasLabel.text = "\(viewModel.totalExtras)"
         battingTeamNameLabel.text = viewModel.battingTeamName
         bowlingTeamNameLabel.text = viewModel.bowlingTeamName
         strikerNameLabel.text = viewModel.strikerName

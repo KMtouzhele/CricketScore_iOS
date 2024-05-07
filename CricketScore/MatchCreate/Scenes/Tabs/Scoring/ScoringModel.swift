@@ -40,6 +40,9 @@ struct ScoringModel {
             var strikerId: String
             var nonStrikerId: String
             var bowlerId: String
+            var strikerName: String
+            var nonStrikerName: String
+            var bowlerName: String
             var battingTeamId: String
             var bowlingTeamId: String
         }
@@ -90,15 +93,18 @@ struct ScoringModel {
         }
         
         struct summaryViewModel {
-            let battingTeamName: String
-            let bowlingTeamName: String
-            let strikerName: String
-            let nonStrikerName: String
-            let bowlerName: String
-            let battingTeamScore: String
-            let RunRate: String
-            let TotalExtras: String
-            let currentOver: String
+            var battingTeamId: String
+            var bowlingTeamId: String
+            var battingTeamName: String
+            var bowlingTeamName: String
+            var strikerName: String
+            var nonStrikerName: String
+            var bowlerName: String
+            var totalWickets: Int
+            var totalRuns: Int
+            var currentOver: Int
+            var currentBall: Int
+            var totalExtras: Int
         }
         struct error {
             let errorMessage: String

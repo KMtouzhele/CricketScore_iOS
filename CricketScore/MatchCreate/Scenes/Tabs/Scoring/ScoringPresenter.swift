@@ -96,35 +96,8 @@ class ScoringPresenter: PresentSocreBoard {
         }
     }
     
-    func assembleSummaryViewModel(response: ScoringModel.Response.summaryResponse){
-        let battingTeamName = response.battingTeamName
-        let bowlingTeamName = response.bowlingTeamName
-        let strikerName = response.strikerName
-        let nonStrikerName = response.nonStrikerName
-        let bowlerName = response.bowlerName
-        let totalWickets = response.totalWickets
-        let totalRuns = response.totalRuns
-        let totalExtras = response.totalExtras
-        let currentOver = response.currentOver
-        let currentBall = response.currentBall
-        let viewModel = ScoringModel.ViewModel.summaryViewModel(
-            battingTeamName: battingTeamName,
-            bowlingTeamName: bowlingTeamName,
-            strikerName: strikerName.isEmpty ? "To be selected" : strikerName,
-            nonStrikerName: nonStrikerName.isEmpty ? "To be selected" : nonStrikerName,
-            bowlerName: bowlerName.isEmpty ? "To be selected" : bowlerName,
-            battingTeamScore: "\(totalWickets) / \(totalRuns)",
-            RunRate: String(format: "%.3f", Double(totalRuns) / Double((currentOver * 6 + currentBall) / 6)),
-            TotalExtras: "\(totalExtras)",
-            currentOver: "\(currentOver) . \(currentBall)"
-        )
-        print("Updated summary: \(viewModel)")
-        scoringViewController?.summary.totalRuns = totalRuns
-        scoringViewController?.summary.totalWickets = totalWickets
-        scoringViewController?.summary.totalExtras = totalExtras
-        scoringViewController?.summary.currentOver = currentOver
-        scoringViewController?.summary.currentBall = currentBall
-        summaryViewController?.displaySummary(viewModel: viewModel)
+    func presentSummaryViewModel(summaryViewModel: ScoringModel.ViewModel.summaryViewModel){
+        scoringViewController?.tabBar.summaryViewModel = summaryViewModel
     }
 
     func assembleTeamPlayersViewModel(response: ScoringModel.Response.playersResponse) {
