@@ -31,6 +31,18 @@ struct ScoringModel {
             let runsLost: Int
             let ballsDelivered: Int
         }
+        struct summaryRequest {
+            var totalWickets: Int
+            var totalRuns: Int
+            var currentOver: Int
+            var currentBall: Int
+            var totalExtras: Int
+            var strikerId: String
+            var nonStrikerId: String
+            var bowlerId: String
+            var battingTeamId: String
+            var bowlingTeamId: String
+        }
     }
     
     struct Response {
@@ -40,6 +52,18 @@ struct ScoringModel {
         struct playersResponse {
             let batterNames: [String: String]
             let bowlerNames: [String: String]
+        }
+        struct summaryResponse {
+            var totalWickets: Int
+            var totalRuns: Int
+            var currentOver: Int
+            var currentBall: Int
+            var totalExtras: Int
+            var strikerName: String
+            var nonStrikerName: String
+            var bowlerName: String
+            var battingTeamName: String
+            var bowlingTeamName: String
         }
     }
     
@@ -63,6 +87,18 @@ struct ScoringModel {
         struct teamPlayers {
             let batterNames: [String: String]
             let bowlerNames: [String: String]
+        }
+        
+        struct summaryViewModel {
+            let battingTeamName: String
+            let bowlingTeamName: String
+            let strikerName: String
+            let nonStrikerName: String
+            let bowlerName: String
+            let battingTeamScore: String
+            let RunRate: String
+            let TotalExtras: String
+            let currentOver: String
         }
         struct error {
             let errorMessage: String

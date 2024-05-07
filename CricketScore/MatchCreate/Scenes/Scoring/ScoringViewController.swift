@@ -11,6 +11,7 @@ import UIKit
 protocol ScoringBusinessLogic {
     func getTeamPlayers(battingTeamId: String, bowlingTeamId: String, completion: @escaping () -> Void)
     func addBall(ballRequest: ScoringModel.Request.ballRequest, scoreRequest: ScoringModel.Request.scoreRequest)
+    func updateSummaryData(summaryRequest: ScoringModel.Request.summaryRequest,ballRequest: ScoringModel.Request.ballRequest)
 }
 
 enum PickerType {
@@ -23,19 +24,20 @@ enum PickerType {
 }
 
 class ScoringViewController: UIViewController, UpdateScoreBoard {
-    
+    //inhert from former view
     var battingTeamId: String?
     var bowlingTeamId: String?
     var matchId: String?
     
+    //retrieve from database
     var battingTeamDic: [String: String]?
     var bowlingTeamDic: [String: String]?
     var battingNamesArray: [String]?
     var bowlingNamesArray: [String]?
     
+    //new variables
     var interactor: ScoringBusinessLogic?
     var presenter = ScoringPresenter()
-    
     var strikerId: String?
     var nonStrikerId: String?
     var bowlerId: String?
@@ -43,60 +45,39 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
     var result: ballType = .runs
     var overCalculator : Int = 0
     
+    //constants
     let boundaries = ["4s", "6s"]
     let wickets = ["Bowled", "Caught", "Caught&Bowled", "LBW", "Hit Wicket", "Run Out", "Stumping"]
     let extras = ["No Ball", "Wide"]
     
+    //pickerview
     var currentPickerType: PickerType = .boundaries
+    
+    //summary stores here
+    var summary = ScoringModel.Request.summaryRequest(
+        totalWickets: 0,
+        totalRuns: 0,
+        currentOver: 0,
+        currentBall: 0,
+        totalExtras: 0,
+        strikerId: "",
+        nonStrikerId: "",
+        bowlerId: "",
+        battingTeamId: "",
+        bowlingTeamId: ""
+    )
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("OverCalculator: \(overCalculator)")
         self.btnConfirm.isEnabled = false
         self.interactor = ScoringInteractor(presenter: self.presenter)
-        self.presenter.viewController = self
+        self.presenter.scoringViewController = self
         self.interactor?.getTeamPlayers(battingTeamId: self.battingTeamId!, bowlingTeamId: self.bowlingTeamId!) { [weak self] in
             self?.initializeViewStatus()
             self?.convertDicToArray()
-            
-            
             self?.enableButtons()
-            
         }
-    }
-    
-    func convertDicToArray(){
-        guard let battingTeamDic = self.battingTeamDic else {
-            print("BattingTeamDic is nil")
-            return
-        }
-        self.battingNamesArray = Array(battingTeamDic.values)
-        
-        guard let bowlingTeamDic = self.bowlingTeamDic else {
-            print("BowlingTeamDic is nil")
-            return
-        }
-        self.bowlingNamesArray = Array(bowlingTeamDic.values)
-    }
-    
-    func updatePickerView() {
-        pickerView.delegate = self
-        pickerView.dataSource = self
-    }
-
-    func initializeViewStatus(){
-        setDefaultStrikerSelection()
-        setDefaultNonStrikerSelection()
-        setDefaultBowlerSelection()
-        stepper.value = 0
-        runsTextField.text = String(Int(stepper.value))
-        pickerView.isHidden = true
-    }
-    
-    func enableButtons(){
-        selectStriker.isEnabled = true
-        selectNonStriker.isEnabled = true
-        selectBowler.isEnabled = true
     }
     
     func displayScoreBoard(viewModel: ScoringModel.ViewModel.score) {
@@ -123,14 +104,6 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
         ballsDelivered.text = String(viewModel.ballsDelivered)
     }
     
-    func updateBtnConfirmStatus(){
-        if strikerId != nil && nonStrikerId != nil && bowlerId != nil {
-            btnConfirm.isEnabled = true
-        } else {
-            btnConfirm.isEnabled = false
-        }
-    }
-    
     func setDefaultStrikerSelection(){
         selectStriker.setTitle("Striker", for: .normal)
         strikerId = nil
@@ -146,6 +119,20 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
         bowlerId = nil
     }
     
+    func removeStrikerFromDic(strikerId: String){
+        var dic = self.battingTeamDic
+        dic?.removeValue(forKey: strikerId)
+        self.battingTeamDic = dic
+        convertDicToArray()
+    }
+    
+    func removeBowlerFromDic(bowlerId: String){
+        var dic = self.bowlingTeamDic
+        dic?.removeValue(forKey: bowlerId)
+        self.bowlingTeamDic = dic
+        convertDicToArray()
+    }
+    
     func initializeStrikerScore(){
         runsStriker.text = "0"
         ballsFacedStriker.text = "0"
@@ -159,18 +146,46 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
         ballsDelivered.text = "0"
     }
     
-    func removeStrikerFromDic(strikerId: String){
-        var dic = self.battingTeamDic
-        dic?.removeValue(forKey: strikerId)
-        self.battingTeamDic = dic
-        convertDicToArray()
+    private func convertDicToArray(){
+        guard let battingTeamDic = self.battingTeamDic else {
+            print("BattingTeamDic is nil")
+            return
+        }
+        self.battingNamesArray = Array(battingTeamDic.values)
+        
+        guard let bowlingTeamDic = self.bowlingTeamDic else {
+            print("BowlingTeamDic is nil")
+            return
+        }
+        self.bowlingNamesArray = Array(bowlingTeamDic.values)
     }
     
-    func removeBowlerFromDic(bowlerId: String){
-        var dic = self.bowlingTeamDic
-        dic?.removeValue(forKey: bowlerId)
-        self.bowlingTeamDic = dic
-        convertDicToArray()
+    private func updatePickerView() {
+        pickerView.delegate = self
+        pickerView.dataSource = self
+    }
+
+    private func initializeViewStatus(){
+        setDefaultStrikerSelection()
+        setDefaultNonStrikerSelection()
+        setDefaultBowlerSelection()
+        stepper.value = 0
+        runsTextField.text = String(Int(stepper.value))
+        pickerView.isHidden = true
+    }
+    
+    private func enableButtons(){
+        selectStriker.isEnabled = true
+        selectNonStriker.isEnabled = true
+        selectBowler.isEnabled = true
+    }
+    
+    private func updateBtnConfirmStatus(){
+        if strikerId != nil && nonStrikerId != nil && bowlerId != nil {
+            btnConfirm.isEnabled = true
+        } else {
+            btnConfirm.isEnabled = false
+        }
     }
     
     @IBOutlet weak var btnConfirm: UIButton!
@@ -216,6 +231,8 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
         )
         print("This ball gets \(ballRequest.runs) runs")
         interactor?.addBall(ballRequest: ballRequest, scoreRequest: scoreRequest)
+        
+        interactor?.updateSummaryData(summaryRequest: summary, ballRequest: ballRequest)
         extraDiselected()
         boundaryDiselected()
         wicketDiselected()
@@ -397,8 +414,10 @@ extension ScoringViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                     }
                 }
             }
+            summary.strikerId = self.strikerId ?? ""
             updateBtnConfirmStatus()
-            print("Selected Batter: \(String(describing: self.strikerId))")
+            print("Selected Striker: \(String(describing: summary.strikerId))")
+            print("Selected Striker: \(String(describing: self.strikerId))")
             
         case .nonStriker:
             selectNonStriker.setTitle(battingNamesArray![row], for: .normal)
@@ -410,8 +429,10 @@ extension ScoringViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                     }
                 }
             }
+            summary.nonStrikerId = self.nonStrikerId ?? ""
             updateBtnConfirmStatus()
-            print("Selected Batter: \(String(describing: self.nonStrikerId))")
+            print("Selected NonStriker: \(String(describing: summary.nonStrikerId))")
+            print("Selected NonStriker: \(String(describing: self.nonStrikerId))")
         case .bowler:
             selectBowler.setTitle(bowlingNamesArray![row], for: .normal)
             if let selectedBowlerName = bowlingNamesArray?[row]{
@@ -422,7 +443,9 @@ extension ScoringViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                     }
                 }
             }
+            summary.bowlerId = self.bowlerId ?? ""
             updateBtnConfirmStatus()
+            print("Selected Bowler: \(String(describing: summary.bowlerId))")
             print("Selected Bowler: \(String(describing: self.bowlerId))")
         }
         pickerView.isHidden = true

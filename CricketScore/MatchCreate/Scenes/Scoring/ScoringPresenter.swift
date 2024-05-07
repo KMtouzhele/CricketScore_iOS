@@ -13,7 +13,8 @@ protocol UpdateScoreBoard {
 
 class ScoringPresenter: PresentSocreBoard {
     
-    weak var viewController: ScoringViewController?
+    weak var scoringViewController: ScoringViewController?
+    weak var summaryViewController: SummaryViewController?
     
     func assembleScoreViewModel(
         request: ScoringModel.Request.scoreRequest,
@@ -73,7 +74,7 @@ class ScoringPresenter: PresentSocreBoard {
             )
             print("Origin runs is \(runsStriker)")
             print("New added run is \(runs)")
-            viewController?.displayScoreBoard(viewModel: viewModel)
+            scoringViewController?.displayScoreBoard(viewModel: viewModel)
         } else {
             let viewModel = ScoringModel.ViewModel.score(
                 overCalculator: overCalculator + isDelivered,
@@ -91,30 +92,61 @@ class ScoringPresenter: PresentSocreBoard {
                 runsLost: runsLost + runs + teamRuns,
                 ballsDelivered: ballsDelivered + isDelivered
             )
-            viewController?.displayScoreBoard(viewModel: viewModel)
+            scoringViewController?.displayScoreBoard(viewModel: viewModel)
         }
+    }
+    
+    func assembleSummaryViewModel(response: ScoringModel.Response.summaryResponse){
+        let battingTeamName = response.battingTeamName
+        let bowlingTeamName = response.bowlingTeamName
+        let strikerName = response.strikerName
+        let nonStrikerName = response.nonStrikerName
+        let bowlerName = response.bowlerName
+        let totalWickets = response.totalWickets
+        let totalRuns = response.totalRuns
+        let totalExtras = response.totalExtras
+        let currentOver = response.currentOver
+        let currentBall = response.currentBall
+        let viewModel = ScoringModel.ViewModel.summaryViewModel(
+            battingTeamName: battingTeamName,
+            bowlingTeamName: bowlingTeamName,
+            strikerName: strikerName.isEmpty ? "To be selected" : strikerName,
+            nonStrikerName: nonStrikerName.isEmpty ? "To be selected" : nonStrikerName,
+            bowlerName: bowlerName.isEmpty ? "To be selected" : bowlerName,
+            battingTeamScore: "\(totalWickets) / \(totalRuns)",
+            RunRate: String(format: "%.3f", Double(totalRuns) / Double((currentOver * 6 + currentBall) / 6)),
+            TotalExtras: "\(totalExtras)",
+            currentOver: "\(currentOver) . \(currentBall)"
+        )
+        print("Updated summary: \(viewModel)")
+        scoringViewController?.summary.totalRuns = totalRuns
+        scoringViewController?.summary.totalWickets = totalWickets
+        scoringViewController?.summary.totalExtras = totalExtras
+        scoringViewController?.summary.currentOver = currentOver
+        scoringViewController?.summary.currentBall = currentBall
+        summaryViewController?.displaySummary(viewModel: viewModel)
     }
 
     func assembleTeamPlayersViewModel(response: ScoringModel.Response.playersResponse) {
         let battersDictionary = response.batterNames
         let bowlersDictionary = response.bowlerNames
-        viewController?.battingTeamDic = battersDictionary
-        viewController?.bowlingTeamDic = bowlersDictionary
+        scoringViewController?.battingTeamDic = battersDictionary
+        scoringViewController?.bowlingTeamDic = bowlersDictionary
     }
     
     func presentDefaultStrikerSelection(ballRequest: ScoringModel.Request.ballRequest){
-        viewController?.setDefaultStrikerSelection()
-        viewController?.initializeStrikerScore()
+        scoringViewController?.setDefaultStrikerSelection()
+        scoringViewController?.initializeStrikerScore()
         let strikerDismissed = ballRequest.strikerId
-        viewController?.removeStrikerFromDic(strikerId: strikerDismissed)
+        scoringViewController?.removeStrikerFromDic(strikerId: strikerDismissed)
     }
     
     func presentDefaultBowlerSelection(ballRequest: ScoringModel.Request.ballRequest){
-        viewController?.setDefaultBowlerSelection()
-        viewController?.initializeBowlerScore()
+        scoringViewController?.setDefaultBowlerSelection()
+        scoringViewController?.initializeBowlerScore()
         let bowlerDismissed = ballRequest.bowlerId
-        viewController?.removeBowlerFromDic(bowlerId: bowlerDismissed)
-        viewController?.overCalculator = 0
+        scoringViewController?.removeBowlerFromDic(bowlerId: bowlerDismissed)
+        scoringViewController?.overCalculator = 0
     }
     
 }
