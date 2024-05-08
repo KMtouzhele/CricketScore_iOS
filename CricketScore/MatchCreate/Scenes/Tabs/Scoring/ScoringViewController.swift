@@ -65,6 +65,7 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
         self.interactor?.getTeamPlayers(battingTeamId: self.battingTeamId!, bowlingTeamId: self.bowlingTeamId!) { [weak self] in
             self?.tabBar.summaryViewModel.battingTeamId = (self?.battingTeamId)!
             self?.tabBar.summaryViewModel.bowlingTeamId = (self?.bowlingTeamId)!
+            self?.tabBar.summaryViewModel.matchId = (self?.matchId)!
             self?.initializeViewStatus()
             self?.convertDicToArray()
             self?.enableButtons()

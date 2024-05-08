@@ -10,6 +10,7 @@ import UIKit
 
 class TabBarController: UITabBarController {
     var summaryViewModel = ScoringModel.ViewModel.summaryViewModel(
+        matchId: "",
         battingTeamId: "",
         bowlingTeamId: "",
         battingTeamName: "",

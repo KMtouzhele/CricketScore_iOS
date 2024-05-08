@@ -93,6 +93,7 @@ struct ScoringModel {
         }
         
         struct summaryViewModel {
+            var matchId: String
             var battingTeamId: String
             var bowlingTeamId: String
             var battingTeamName: String

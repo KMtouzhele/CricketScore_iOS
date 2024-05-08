@@ -10,17 +10,6 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 class SummaryWorker: RetrieveTeamInfo {
-    func getTeamName(teamId: String) -> String {
-        var teamName: String = ""
-        let dispatchGroup = DispatchGroup()
-        dispatchGroup.enter()
-        getTeamNameById(teamId: teamId) { name in
-            teamName = name ?? ""
-            dispatchGroup.leave()
-        }
-        dispatchGroup.wait()
-        return teamName
-    }
     
     func getTeamNameById(teamId: String, completion: @escaping(String?) -> Void) {
         let db = Firestore.firestore()

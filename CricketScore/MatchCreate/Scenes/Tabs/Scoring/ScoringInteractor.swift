@@ -51,13 +51,22 @@ class ScoringInteractor : ScoringBusinessLogic {
         ballRequest: ScoringModel.Request.ballRequest,
         scoreRequest: ScoringModel.Request.scoreRequest
     ) {
+        var newRuns: Int
+        switch ballRequest.result{
+        case.fourBoundary:
+            newRuns = 4
+        case .sixBoundary:
+            newRuns = 6
+        default: newRuns = ballRequest.runs
+        }
+        
         let response = ScoringModel.Response.bassResponse(
             ball: Ball(
                 matchId: ballRequest.matchId,
                 striker: ballRequest.strikerId,
                 nonStriker: ballRequest.nonStrikerId,
                 bowler: ballRequest.bowlerId,
-                runs: ballRequest.runs,
+                runs: newRuns,
                 isBallDelivered: isBallDelivered(request: ballRequest),
                 result: ballRequest.result
             )
@@ -139,6 +148,7 @@ class ScoringInteractor : ScoringBusinessLogic {
         
         
         let updatedSummaryViewModel = ScoringModel.ViewModel.summaryViewModel(
+            matchId: summaryViewModel.matchId,
             battingTeamId: summaryViewModel.battingTeamId,
             bowlingTeamId: summaryViewModel.bowlingTeamId,
             battingTeamName: "Placeholder",

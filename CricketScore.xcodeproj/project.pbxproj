@@ -34,6 +34,10 @@
 		C1A92C3D2BEB0DC10072EF7C /* SummaryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A92C3C2BEB0DC10072EF7C /* SummaryPresenter.swift */; };
 		C1A92C402BEB1F6E0072EF7C /* IndividualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A92C3F2BEB1F6E0072EF7C /* IndividualViewController.swift */; };
 		C1A92C422BEB25F30072EF7C /* IndividualInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A92C412BEB25F30072EF7C /* IndividualInteractor.swift */; };
+		C1A92C442BEB59C60072EF7C /* IndividualModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A92C432BEB59C60072EF7C /* IndividualModel.swift */; };
+		C1A92C462BEB60600072EF7C /* IndividualWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A92C452BEB60600072EF7C /* IndividualWorker.swift */; };
+		C1A92C482BEB6A430072EF7C /* IndividualPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A92C472BEB6A430072EF7C /* IndividualPresenter.swift */; };
+		C1A92C4A2BEB8A190072EF7C /* IndividualViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A92C492BEB8A190072EF7C /* IndividualViewCell.swift */; };
 		C1CC86772BE0A3A000B1D64C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C1CC86762BE0A3A000B1D64C /* FirebaseFirestoreSwift */; };
 		C1CC86792BE0A3AD00B1D64C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1CC86782BE0A3AD00B1D64C /* GoogleService-Info.plist */; };
 		C1F803E22BE0C4C30005C784 /* BattingSetupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F803E12BE0C4C30005C784 /* BattingSetupModel.swift */; };
@@ -75,6 +79,10 @@
 		C1A92C3C2BEB0DC10072EF7C /* SummaryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPresenter.swift; sourceTree = "<group>"; };
 		C1A92C3F2BEB1F6E0072EF7C /* IndividualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualViewController.swift; sourceTree = "<group>"; };
 		C1A92C412BEB25F30072EF7C /* IndividualInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualInteractor.swift; sourceTree = "<group>"; };
+		C1A92C432BEB59C60072EF7C /* IndividualModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualModel.swift; sourceTree = "<group>"; };
+		C1A92C452BEB60600072EF7C /* IndividualWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualWorker.swift; sourceTree = "<group>"; };
+		C1A92C472BEB6A430072EF7C /* IndividualPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualPresenter.swift; sourceTree = "<group>"; };
+		C1A92C492BEB8A190072EF7C /* IndividualViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualViewCell.swift; sourceTree = "<group>"; };
 		C1CC86782BE0A3AD00B1D64C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C1F803E12BE0C4C30005C784 /* BattingSetupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattingSetupModel.swift; sourceTree = "<group>"; };
 		C1F803E32BE0C56C0005C784 /* BattingSetupInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattingSetupInteractor.swift; sourceTree = "<group>"; };
@@ -189,6 +197,10 @@
 			children = (
 				C1A92C3F2BEB1F6E0072EF7C /* IndividualViewController.swift */,
 				C1A92C412BEB25F30072EF7C /* IndividualInteractor.swift */,
+				C1A92C432BEB59C60072EF7C /* IndividualModel.swift */,
+				C1A92C452BEB60600072EF7C /* IndividualWorker.swift */,
+				C1A92C472BEB6A430072EF7C /* IndividualPresenter.swift */,
+				C1A92C492BEB8A190072EF7C /* IndividualViewCell.swift */,
 			);
 			path = Individual;
 			sourceTree = "<group>";
@@ -324,8 +336,10 @@
 				C1A92C402BEB1F6E0072EF7C /* IndividualViewController.swift in Sources */,
 				C12FD6282BE668D50029730D /* ScoringInteractor.swift in Sources */,
 				C1212ADB2BE3579E00D7E928 /* MatchHistoryRouter.swift in Sources */,
+				C1A92C442BEB59C60072EF7C /* IndividualModel.swift in Sources */,
 				C1659EC32BDFC4DF00D9A360 /* AppDelegate.swift in Sources */,
 				C1A92C392BEA3DFC0072EF7C /* SummaryWorker.swift in Sources */,
+				C1A92C482BEB6A430072EF7C /* IndividualPresenter.swift in Sources */,
 				C1212AE52BE365AE00D7E928 /* Match.swift in Sources */,
 				C1A92C372BEA3DF00072EF7C /* SummaryInteractor.swift in Sources */,
 				C1A92C422BEB25F30072EF7C /* IndividualInteractor.swift in Sources */,
@@ -338,11 +352,13 @@
 				C12FD62C2BE66A6B0029730D /* ScoringPresenter.swift in Sources */,
 				C1212ADF2BE3645A00D7E928 /* BowlingSetupInteractor.swift in Sources */,
 				C1A92C352BEA02340072EF7C /* TabBarController.swift in Sources */,
+				C1A92C462BEB60600072EF7C /* IndividualWorker.swift in Sources */,
 				C1F803EE2BE0CAB10005C784 /* Team.swift in Sources */,
 				C13405442BE5059C00D894BA /* ScoringModel.swift in Sources */,
 				C1F803F02BE10CB30005C784 /* BattingSetupViewController.swift in Sources */,
 				C1A92C3B2BEA41B00072EF7C /* SummaryModel.swift in Sources */,
 				C1F803EC2BE0C95C0005C784 /* Player.swift in Sources */,
+				C1A92C4A2BEB8A190072EF7C /* IndividualViewCell.swift in Sources */,
 				C1212AD92BE3559C00D7E928 /* MatchHistoryViewController.swift in Sources */,
 				C1F803E82BE0C63E0005C784 /* BattingSetupWorker.swift in Sources */,
 			);
