@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -592,7 +593,7 @@
                             <constraint firstItem="iTB-rY-nuj" firstAttribute="trailing" secondItem="94Q-qh-X4N" secondAttribute="trailing" constant="24" id="vRS-Pp-fHT"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Summary" image="list.bullet.clipboard" catalog="system" id="NiV-eF-czB"/>
+                    <tabBarItem key="tabBarItem" title="Summary" image="list.bullet.circle" catalog="system" id="NiV-eF-czB"/>
                     <connections>
                         <outlet property="battingScoreLabel" destination="Ait-oH-O64" id="b6v-AU-egO"/>
                         <outlet property="battingTeamNameLabel" destination="EN6-ub-1q9" id="g7y-KR-X6F"/>
@@ -607,7 +608,75 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NQL-JL-kGH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5210" y="388"/>
+            <point key="canvasLocation" x="5207" y="-270"/>
+        </scene>
+        <!--Individual-->
+        <scene sceneID="2QG-IP-Ibo">
+            <objects>
+                <viewController id="qmk-Qv-0W1" customClass="IndividualViewController" customModule="CricketScore" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gIr-JB-OZW">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Individual Tracking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCG-Hz-7a1">
+                                <rect key="frame" x="24" y="83" width="224" height="34"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Tla-LK-ogW">
+                                <rect key="frame" x="24" y="149" width="345" height="604"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdf-pH-LSa">
+                                <rect key="frame" x="264" y="87" width="113" height="30"/>
+                                <menu key="menu" id="KAv-ex-RLS">
+                                    <children>
+                                        <command title="Batting" id="JyS-CC-3cz"/>
+                                        <command title="Bowling" id="ows-qm-HM1"/>
+                                    </children>
+                                </menu>
+                                <state key="normal" title="Batting"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="H2O-B6-4zR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Tla-LK-ogW" firstAttribute="leading" secondItem="H2O-B6-4zR" secondAttribute="leading" constant="24" id="5NS-rx-OCo"/>
+                            <constraint firstItem="H2O-B6-4zR" firstAttribute="trailing" secondItem="pdf-pH-LSa" secondAttribute="trailing" constant="16" id="IEu-4V-spc"/>
+                            <constraint firstItem="Tla-LK-ogW" firstAttribute="top" secondItem="pdf-pH-LSa" secondAttribute="bottom" constant="32" id="PER-cu-gP3"/>
+                            <constraint firstItem="lCG-Hz-7a1" firstAttribute="leading" secondItem="H2O-B6-4zR" secondAttribute="leading" constant="24" id="TNA-gI-fVz"/>
+                            <constraint firstItem="pdf-pH-LSa" firstAttribute="leading" secondItem="lCG-Hz-7a1" secondAttribute="trailing" constant="16" id="Vuz-Ik-4tD"/>
+                            <constraint firstItem="lCG-Hz-7a1" firstAttribute="top" secondItem="H2O-B6-4zR" secondAttribute="top" constant="24" id="e5d-2t-rYe"/>
+                            <constraint firstItem="H2O-B6-4zR" firstAttribute="bottom" secondItem="Tla-LK-ogW" secondAttribute="bottom" constant="16" id="gcY-bd-pxT"/>
+                            <constraint firstItem="H2O-B6-4zR" firstAttribute="trailing" secondItem="Tla-LK-ogW" secondAttribute="trailing" constant="24" id="inb-6s-U0n"/>
+                            <constraint firstItem="Tla-LK-ogW" firstAttribute="top" secondItem="lCG-Hz-7a1" secondAttribute="bottom" constant="32" id="lAP-9m-H6o"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Individual" image="person.circle" catalog="system" id="tqQ-Ld-Y0X"/>
+                    <connections>
+                        <outlet property="playersTable" destination="Tla-LK-ogW" id="ANh-W1-28x"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A1D-dl-dg2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5206.8702290076335" y="443.66197183098592"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="teP-Rx-zcR">
+            <objects>
+                <viewController id="17L-7k-JaW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oi9-tu-hVP">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Pih-UK-dTR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="z6Q-wb-7yU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wtP-cw-9hL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5207" y="1141"/>
         </scene>
         <!--Scoring-->
         <scene sceneID="qu0-QR-O6N">
@@ -921,7 +990,7 @@
                             <constraint firstItem="u3I-rC-ljB" firstAttribute="leading" secondItem="5g2-Tr-PV7" secondAttribute="leading" constant="24" id="k4g-D2-nuq"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Scoring" image="pencil" catalog="system" id="c3Q-Mi-FLp"/>
+                    <tabBarItem key="tabBarItem" title="Scoring" image="cricket.ball" catalog="system" id="c3Q-Mi-FLp"/>
                     <connections>
                         <outlet property="ballsDelivered" destination="ZSk-nc-NVc" id="3AB-2b-Rt0"/>
                         <outlet property="ballsFacedNonStriker" destination="nQS-b5-vcw" id="MKS-or-OrX"/>
@@ -948,7 +1017,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mSD-mG-Mie" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5209.9236641221369" y="-265.49295774647891"/>
+            <point key="canvasLocation" x="5207" y="-993"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="mxB-vY-Pwt">
@@ -964,6 +1033,8 @@
                     <connections>
                         <segue destination="NLn-T1-Lcj" kind="relationship" relationship="viewControllers" id="yIH-1R-ChZ"/>
                         <segue destination="UJ3-Lw-Plh" kind="relationship" relationship="viewControllers" id="pFE-AM-vJh"/>
+                        <segue destination="qmk-Qv-0W1" kind="relationship" relationship="viewControllers" id="Vke-7j-eaw"/>
+                        <segue destination="17L-7k-JaW" kind="relationship" relationship="viewControllers" id="LHb-gt-DfE"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UB9-Rl-Z95" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -990,8 +1061,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="list.bullet.clipboard" catalog="system" width="98" height="128"/>
-        <image name="pencil" catalog="system" width="128" height="113"/>
+        <image name="cricket.ball" catalog="system" width="128" height="123"/>
+        <image name="gear" catalog="system" width="128" height="122"/>
+        <image name="list.bullet.circle" catalog="system" width="128" height="123"/>
+        <image name="person.circle" catalog="system" width="128" height="123"/>
         <image name="photo.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

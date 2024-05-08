@@ -8,7 +8,16 @@
 import Foundation
 import UIKit
 
-class SummaryViewController: UIViewController {
+protocol SummaryViewBusinessLogic: AnyObject {
+    func getTeamName(request: SummaryModel.Request)
+}
+
+class SummaryViewController: UIViewController, DisplaySummary {
+    
+    var interactor: SummaryViewBusinessLogic?
+    var presenter = SummaryPresenter()
+    var battingTeamName = ""
+    var bowlingTeamName = ""
     
     @IBOutlet weak var battingScoreLabel: UILabel!
     @IBOutlet weak var runRateLabel: UILabel!
@@ -22,9 +31,22 @@ class SummaryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.interactor = SummaryInteractor(presenter: self.presenter)
+        self.presenter.viewController = self
+        
         if let tabBar = self.tabBarController as? TabBarController {
             let viewModel = tabBar.summaryViewModel
+            
+            let battingTeamId = viewModel.battingTeamId
+            let bowlingTeamId = viewModel.bowlingTeamId
+            
+            let request = SummaryModel.Request(
+                battingteamId: battingTeamId,
+                bowlingteamId: bowlingTeamId
+            )
             displaySummary(viewModel: viewModel)
+            self.interactor?.getTeamName(request: request)
+            
         } else {
             print("Unable to access TabBarController")
         }
@@ -34,6 +56,11 @@ class SummaryViewController: UIViewController {
         if let tabBar = self.tabBarController as? TabBarController {
             let viewModel = tabBar.summaryViewModel
             displaySummary(viewModel: viewModel)
+            let teamNameVM = SummaryModel.ViewModel.teamNames(
+                battingTeamName: self.battingTeamName,
+                bowlingTeamName: self.bowlingTeamName
+            )
+            displayTeamNames(viewModel: teamNameVM)
         } else {
             print("Unable to access TabBarController")
         }
@@ -50,4 +77,10 @@ class SummaryViewController: UIViewController {
         nonStrikerNameLabel.text = viewModel.nonStrikerName
         bowlerNameLabel.text = viewModel.bowlerName
     }
+    
+    func displayTeamNames(viewModel: SummaryModel.ViewModel.teamNames) {
+        battingTeamNameLabel.text = viewModel.battingTeamName
+        bowlingTeamNameLabel.text = viewModel.bowlingTeamName
+    }
+    
 }
