@@ -26,6 +26,7 @@
 		C1659ECA2BDFC4DF00D9A360 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C1659EC92BDFC4DF00D9A360 /* Base */; };
 		C1659ECC2BDFC4E000D9A360 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1659ECB2BDFC4E000D9A360 /* Assets.xcassets */; };
 		C1659ECF2BDFC4E000D9A360 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C1659ECE2BDFC4E000D9A360 /* Base */; };
+		C16DDEDC2BECB0700048ACE4 /* BowlerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16DDEDB2BECB0700048ACE4 /* BowlerViewCell.swift */; };
 		C1A92C322BE8E0B30072EF7C /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A92C312BE8E0B30072EF7C /* SummaryViewController.swift */; };
 		C1A92C352BEA02340072EF7C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A92C342BEA02340072EF7C /* TabBarController.swift */; };
 		C1A92C372BEA3DF00072EF7C /* SummaryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A92C362BEA3DF00072EF7C /* SummaryInteractor.swift */; };
@@ -37,7 +38,7 @@
 		C1A92C442BEB59C60072EF7C /* IndividualModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A92C432BEB59C60072EF7C /* IndividualModel.swift */; };
 		C1A92C462BEB60600072EF7C /* IndividualWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A92C452BEB60600072EF7C /* IndividualWorker.swift */; };
 		C1A92C482BEB6A430072EF7C /* IndividualPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A92C472BEB6A430072EF7C /* IndividualPresenter.swift */; };
-		C1A92C4A2BEB8A190072EF7C /* IndividualViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A92C492BEB8A190072EF7C /* IndividualViewCell.swift */; };
+		C1A92C4A2BEB8A190072EF7C /* StrikerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A92C492BEB8A190072EF7C /* StrikerViewCell.swift */; };
 		C1CC86772BE0A3A000B1D64C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C1CC86762BE0A3A000B1D64C /* FirebaseFirestoreSwift */; };
 		C1CC86792BE0A3AD00B1D64C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1CC86782BE0A3AD00B1D64C /* GoogleService-Info.plist */; };
 		C1F803E22BE0C4C30005C784 /* BattingSetupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F803E12BE0C4C30005C784 /* BattingSetupModel.swift */; };
@@ -71,6 +72,7 @@
 		C1659ECB2BDFC4E000D9A360 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1659ECE2BDFC4E000D9A360 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1659ED02BDFC4E000D9A360 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C16DDEDB2BECB0700048ACE4 /* BowlerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlerViewCell.swift; sourceTree = "<group>"; };
 		C1A92C312BE8E0B30072EF7C /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		C1A92C342BEA02340072EF7C /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		C1A92C362BEA3DF00072EF7C /* SummaryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryInteractor.swift; sourceTree = "<group>"; };
@@ -82,7 +84,7 @@
 		C1A92C432BEB59C60072EF7C /* IndividualModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualModel.swift; sourceTree = "<group>"; };
 		C1A92C452BEB60600072EF7C /* IndividualWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualWorker.swift; sourceTree = "<group>"; };
 		C1A92C472BEB6A430072EF7C /* IndividualPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualPresenter.swift; sourceTree = "<group>"; };
-		C1A92C492BEB8A190072EF7C /* IndividualViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualViewCell.swift; sourceTree = "<group>"; };
+		C1A92C492BEB8A190072EF7C /* StrikerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrikerViewCell.swift; sourceTree = "<group>"; };
 		C1CC86782BE0A3AD00B1D64C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C1F803E12BE0C4C30005C784 /* BattingSetupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattingSetupModel.swift; sourceTree = "<group>"; };
 		C1F803E32BE0C56C0005C784 /* BattingSetupInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattingSetupInteractor.swift; sourceTree = "<group>"; };
@@ -200,7 +202,8 @@
 				C1A92C432BEB59C60072EF7C /* IndividualModel.swift */,
 				C1A92C452BEB60600072EF7C /* IndividualWorker.swift */,
 				C1A92C472BEB6A430072EF7C /* IndividualPresenter.swift */,
-				C1A92C492BEB8A190072EF7C /* IndividualViewCell.swift */,
+				C1A92C492BEB8A190072EF7C /* StrikerViewCell.swift */,
+				C16DDEDB2BECB0700048ACE4 /* BowlerViewCell.swift */,
 			);
 			path = Individual;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				C12FD62A2BE66A120029730D /* ScoringWorker.swift in Sources */,
 				C1659EC52BDFC4DF00D9A360 /* SceneDelegate.swift in Sources */,
 				C1F803E62BE0C57F0005C784 /* BattingSetupPresenter.swift in Sources */,
+				C16DDEDC2BECB0700048ACE4 /* BowlerViewCell.swift in Sources */,
 				C1A92C3D2BEB0DC10072EF7C /* SummaryPresenter.swift in Sources */,
 				C13405462BE5063A00D894BA /* Ball.swift in Sources */,
 				C12FD62C2BE66A6B0029730D /* ScoringPresenter.swift in Sources */,
@@ -358,7 +362,7 @@
 				C1F803F02BE10CB30005C784 /* BattingSetupViewController.swift in Sources */,
 				C1A92C3B2BEA41B00072EF7C /* SummaryModel.swift in Sources */,
 				C1F803EC2BE0C95C0005C784 /* Player.swift in Sources */,
-				C1A92C4A2BEB8A190072EF7C /* IndividualViewCell.swift in Sources */,
+				C1A92C4A2BEB8A190072EF7C /* StrikerViewCell.swift in Sources */,
 				C1212AD92BE3559C00D7E928 /* MatchHistoryViewController.swift in Sources */,
 				C1F803E82BE0C63E0005C784 /* BattingSetupWorker.swift in Sources */,
 			);

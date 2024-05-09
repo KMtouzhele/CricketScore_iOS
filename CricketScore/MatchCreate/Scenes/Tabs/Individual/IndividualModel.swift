@@ -15,16 +15,16 @@ struct IndividualModel {
     
     struct Response {
         struct BatterResponse {
+            let strikerNamesDic: [String: String]
             let strikerRunsDic: [String: Int]
             let strikerBallsFacedDic: [String: Int]
         }
         
         struct BowlerResponse {
-            let bowlerName: String
-            let runsLost: Int
-            let wickets: Int
-            let ballsDelivered: Int
-            
+            let bowlerNamesDic: [String: String]
+            let bowlerRunsLostDic: [String: Int]
+            let bowlerBallsDeliveredDic: [String: Int]
+            let bowlerWicketsDic: [String: Int]
         }
     }
     
@@ -36,5 +36,10 @@ struct IndividualModel {
         struct BowlerViewModel {
             let bowlerindividual: [(bowler: String, runs: Int, ballsFaced: Int)]
         }
+    }
+    
+    struct tableData {
+        var strikers : [(striker: String, name: String, runs: Int, ballsFaced: Int)]
+        var bowlers: [(bowler: String, name: String, runsLost: Int, ballsDelivered: Int, wickets: Int)]
     }
 }

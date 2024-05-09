@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-class IndividualViewCell: UITableViewCell {
+class StrikerViewCell: UITableViewCell {
     
     @IBOutlet weak var strikerName: UILabel!
     @IBOutlet weak var runs: UILabel!
