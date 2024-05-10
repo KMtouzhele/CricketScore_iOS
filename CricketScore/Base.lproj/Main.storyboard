@@ -8,6 +8,145 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Match History Detail View Controller-->
+        <scene sceneID="DVf-Cx-Xeh">
+            <objects>
+                <viewController id="DRa-UY-bq2" customClass="MatchHistoryDetailViewController" customModule="CricketScore" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ak1-gD-eDc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXd-8N-vYG">
+                                <rect key="frame" x="24" y="119.00000000000001" width="345" height="33.666666666666671"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uWc-GU-Ih6">
+                                <rect key="frame" x="24" y="168.66666666666663" width="345" height="583"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MatchHistoryDetailTableViewCell" id="z9L-cR-kH0" customClass="MatchHistoryDetailTableViewCell" customModule="CricketScore" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="345" height="152.33332824707031"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z9L-cR-kH0" id="eac-0E-lRF">
+                                            <rect key="frame" x="0.0" y="0.0" width="345" height="152.33332824707031"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="3nR-YN-edS">
+                                                    <rect key="frame" x="16" y="15.999999999999993" width="313" height="120.33333333333331"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ij2-BS-vr9">
+                                                            <rect key="frame" x="0.0" y="0.0" width="120.33333333333333" height="120.33333333333333"/>
+                                                            <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yOO-6c-XHW">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="120.33333333333333" height="34.666666666666664"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="STRIKER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4r2-c3-IwR">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="120.33333333333333" height="14.333333333333334"/>
+                                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSA-st-yah">
+                                                                            <rect key="frame" x="0.0" y="14.333333333333334" width="120.33333333333333" height="20.333333333333329"/>
+                                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EWy-AD-zWU">
+                                                                    <rect key="frame" x="0.0" y="42.666666666666671" width="120.33333333333333" height="34.666666666666671"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="NON STRIKER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jxt-qC-CbH">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="120.33333333333333" height="14.333333333333334"/>
+                                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5U-2O-VCE">
+                                                                            <rect key="frame" x="0.0" y="14.333333333333334" width="120.33333333333333" height="20.333333333333329"/>
+                                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aWb-MV-KIu">
+                                                                    <rect key="frame" x="0.0" y="85.333333333333329" width="120.33333333333333" height="35"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="BOWLER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siq-Xk-i84">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="120.33333333333333" height="14.333333333333334"/>
+                                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTd-ad-dZG">
+                                                                            <rect key="frame" x="0.0" y="14.333333333333345" width="120.33333333333333" height="20.666666666666671"/>
+                                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Boundaries" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSp-6x-T6n">
+                                                            <rect key="frame" x="120.33333333333336" y="0.0" width="192.66666666666663" height="120.33333333333333"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3nR-YN-edS" firstAttribute="leading" secondItem="eac-0E-lRF" secondAttribute="leading" constant="16" id="3My-Xt-IaM"/>
+                                                <constraint firstAttribute="trailing" secondItem="3nR-YN-edS" secondAttribute="trailing" constant="16" id="apo-3r-fQu"/>
+                                                <constraint firstAttribute="bottom" secondItem="3nR-YN-edS" secondAttribute="bottom" constant="16" id="nCT-g8-bQC"/>
+                                                <constraint firstItem="3nR-YN-edS" firstAttribute="top" secondItem="eac-0E-lRF" secondAttribute="top" constant="16" id="zGS-q8-vGg"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bowlerName" destination="eTd-ad-dZG" id="VoH-Ff-Eoi"/>
+                                            <outlet property="nonStrikerName" destination="f5U-2O-VCE" id="OyL-n1-jQy"/>
+                                            <outlet property="result" destination="pSp-6x-T6n" id="QHl-2I-9A5"/>
+                                            <outlet property="strikerName" destination="qSA-st-yah" id="cjc-NE-GS1"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cIg-hP-eta">
+                                <rect key="frame" x="24" y="767.66666666666663" width="345" height="34.333333333333371"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Share this Match"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="aPV-bg-wy5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aPV-bg-wy5" firstAttribute="bottom" secondItem="cIg-hP-eta" secondAttribute="bottom" constant="16" id="3td-Pf-Fg7"/>
+                            <constraint firstItem="uWc-GU-Ih6" firstAttribute="top" secondItem="JXd-8N-vYG" secondAttribute="bottom" constant="16" id="8a4-ZK-rV5"/>
+                            <constraint firstItem="uWc-GU-Ih6" firstAttribute="leading" secondItem="aPV-bg-wy5" secondAttribute="leading" constant="24" id="FvL-3w-m9z"/>
+                            <constraint firstItem="aPV-bg-wy5" firstAttribute="trailing" secondItem="cIg-hP-eta" secondAttribute="trailing" constant="24" id="JBU-0K-17g"/>
+                            <constraint firstItem="aPV-bg-wy5" firstAttribute="trailing" secondItem="JXd-8N-vYG" secondAttribute="trailing" constant="24" id="Mv3-l9-0pa"/>
+                            <constraint firstItem="cIg-hP-eta" firstAttribute="top" secondItem="uWc-GU-Ih6" secondAttribute="bottom" constant="16" id="Nlm-VW-JsQ"/>
+                            <constraint firstItem="JXd-8N-vYG" firstAttribute="top" secondItem="aPV-bg-wy5" secondAttribute="top" constant="16" id="bCv-pj-0b6"/>
+                            <constraint firstItem="cIg-hP-eta" firstAttribute="leading" secondItem="aPV-bg-wy5" secondAttribute="leading" constant="24" id="dZY-93-1Kb"/>
+                            <constraint firstItem="aPV-bg-wy5" firstAttribute="trailing" secondItem="uWc-GU-Ih6" secondAttribute="trailing" constant="24" id="oDG-tD-BKe"/>
+                            <constraint firstItem="JXd-8N-vYG" firstAttribute="leading" secondItem="aPV-bg-wy5" secondAttribute="leading" constant="24" id="xsM-kP-seb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="icA-t2-UpF"/>
+                    <connections>
+                        <outlet property="table" destination="uWc-GU-Ih6" id="37x-lJ-OUn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dw5-Xx-QpF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1866" y="-678"/>
+        </scene>
         <!--Match History View Controller-->
         <scene sceneID="gDh-KO-a0R">
             <objects>
@@ -113,6 +252,7 @@
                                             <outlet property="bowlingTeamName" destination="HH2-oW-sG1" id="74t-Ar-laY"/>
                                             <outlet property="totalRuns" destination="3LM-Jo-dE0" id="Of3-cW-Pd8"/>
                                             <outlet property="totalWickets" destination="vYH-or-C0o" id="uku-Lx-aNU"/>
+                                            <segue destination="DRa-UY-bq2" kind="show" identifier="ShowMatchHistoryDetail" id="cpt-x9-GnO"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -31,6 +31,12 @@
 		C14C94BC2BEDF82A003ED970 /* MatchHistoryWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C94BB2BEDF82A003ED970 /* MatchHistoryWorker.swift */; };
 		C14C94BE2BEE021D003ED970 /* MatchHistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C94BD2BEE021D003ED970 /* MatchHistoryInteractor.swift */; };
 		C14C94C02BEE0322003ED970 /* MatchHistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C94BF2BEE0322003ED970 /* MatchHistoryPresenter.swift */; };
+		C14C94C42BEE2F54003ED970 /* MatchHistoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C94C32BEE2F54003ED970 /* MatchHistoryDetailViewController.swift */; };
+		C14C94C62BEE3001003ED970 /* MatchHistoryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C94C52BEE3001003ED970 /* MatchHistoryDetailTableViewCell.swift */; };
+		C14C94C82BEE327C003ED970 /* MatchHistoryDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C94C72BEE327C003ED970 /* MatchHistoryDetailModel.swift */; };
+		C14C94CA2BEE3946003ED970 /* MatchHistoryDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C94C92BEE3946003ED970 /* MatchHistoryDetailInteractor.swift */; };
+		C14C94CC2BEE413C003ED970 /* MatchHistoryDetailWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C94CB2BEE413C003ED970 /* MatchHistoryDetailWorker.swift */; };
+		C14C94CE2BEE4545003ED970 /* MatchHistoryDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C94CD2BEE4545003ED970 /* MatchHistoryDetailPresenter.swift */; };
 		C1659EC32BDFC4DF00D9A360 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1659EC22BDFC4DF00D9A360 /* AppDelegate.swift */; };
 		C1659EC52BDFC4DF00D9A360 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1659EC42BDFC4DF00D9A360 /* SceneDelegate.swift */; };
 		C1659ECA2BDFC4DF00D9A360 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C1659EC92BDFC4DF00D9A360 /* Base */; };
@@ -85,6 +91,12 @@
 		C14C94BB2BEDF82A003ED970 /* MatchHistoryWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHistoryWorker.swift; sourceTree = "<group>"; };
 		C14C94BD2BEE021D003ED970 /* MatchHistoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHistoryInteractor.swift; sourceTree = "<group>"; };
 		C14C94BF2BEE0322003ED970 /* MatchHistoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHistoryPresenter.swift; sourceTree = "<group>"; };
+		C14C94C32BEE2F54003ED970 /* MatchHistoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHistoryDetailViewController.swift; sourceTree = "<group>"; };
+		C14C94C52BEE3001003ED970 /* MatchHistoryDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHistoryDetailTableViewCell.swift; sourceTree = "<group>"; };
+		C14C94C72BEE327C003ED970 /* MatchHistoryDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHistoryDetailModel.swift; sourceTree = "<group>"; };
+		C14C94C92BEE3946003ED970 /* MatchHistoryDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHistoryDetailInteractor.swift; sourceTree = "<group>"; };
+		C14C94CB2BEE413C003ED970 /* MatchHistoryDetailWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHistoryDetailWorker.swift; sourceTree = "<group>"; };
+		C14C94CD2BEE4545003ED970 /* MatchHistoryDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHistoryDetailPresenter.swift; sourceTree = "<group>"; };
 		C1659EBF2BDFC4DF00D9A360 /* CricketScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CricketScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1659EC22BDFC4DF00D9A360 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1659EC42BDFC4DF00D9A360 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,11 +142,8 @@
 		C1212AD72BE3557E00D7E928 /* MatchHistory */ = {
 			isa = PBXGroup;
 			children = (
-				C1212AD82BE3559C00D7E928 /* MatchHistoryViewController.swift */,
-				C14C94B92BEDF66D003ED970 /* MatchHistoryCell.swift */,
-				C14C94BB2BEDF82A003ED970 /* MatchHistoryWorker.swift */,
-				C14C94BD2BEE021D003ED970 /* MatchHistoryInteractor.swift */,
-				C14C94BF2BEE0322003ED970 /* MatchHistoryPresenter.swift */,
+				C14C94C12BEE2EE0003ED970 /* Main */,
+				C14C94C22BEE2EFB003ED970 /* Detail */,
 			);
 			path = MatchHistory;
 			sourceTree = "<group>";
@@ -175,6 +184,31 @@
 				C14C94B72BEDDB9B003ED970 /* SettingsDetailViewController.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		C14C94C12BEE2EE0003ED970 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C1212AD82BE3559C00D7E928 /* MatchHistoryViewController.swift */,
+				C14C94B92BEDF66D003ED970 /* MatchHistoryCell.swift */,
+				C14C94BB2BEDF82A003ED970 /* MatchHistoryWorker.swift */,
+				C14C94BD2BEE021D003ED970 /* MatchHistoryInteractor.swift */,
+				C14C94BF2BEE0322003ED970 /* MatchHistoryPresenter.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		C14C94C22BEE2EFB003ED970 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C14C94C32BEE2F54003ED970 /* MatchHistoryDetailViewController.swift */,
+				C14C94C52BEE3001003ED970 /* MatchHistoryDetailTableViewCell.swift */,
+				C14C94C72BEE327C003ED970 /* MatchHistoryDetailModel.swift */,
+				C14C94C92BEE3946003ED970 /* MatchHistoryDetailInteractor.swift */,
+				C14C94CB2BEE413C003ED970 /* MatchHistoryDetailWorker.swift */,
+				C14C94CD2BEE4545003ED970 /* MatchHistoryDetailPresenter.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		C1659EB62BDFC4DF00D9A360 = {
@@ -374,6 +408,7 @@
 				C14C94BA2BEDF66D003ED970 /* MatchHistoryCell.swift in Sources */,
 				C1F803E42BE0C56C0005C784 /* BattingSetupInteractor.swift in Sources */,
 				C14C94BE2BEE021D003ED970 /* MatchHistoryInteractor.swift in Sources */,
+				C14C94CC2BEE413C003ED970 /* MatchHistoryDetailWorker.swift in Sources */,
 				C13405422BE484D000D894BA /* ScoringViewController.swift in Sources */,
 				C14C94AD2BECFFA7003ED970 /* SettingsViewController.swift in Sources */,
 				C1212ADD2BE363C600D7E928 /* BowlingSetupModel.swift in Sources */,
@@ -381,6 +416,7 @@
 				C14C94B42BEDC760003ED970 /* SettingsInteractor.swift in Sources */,
 				C1A92C402BEB1F6E0072EF7C /* IndividualViewController.swift in Sources */,
 				C12FD6282BE668D50029730D /* ScoringInteractor.swift in Sources */,
+				C14C94CA2BEE3946003ED970 /* MatchHistoryDetailInteractor.swift in Sources */,
 				C1A92C442BEB59C60072EF7C /* IndividualModel.swift in Sources */,
 				C1659EC32BDFC4DF00D9A360 /* AppDelegate.swift in Sources */,
 				C1A92C392BEA3DFC0072EF7C /* SummaryWorker.swift in Sources */,
@@ -390,6 +426,7 @@
 				C14C94AB2BECF6A1003ED970 /* SettingsWorker.swift in Sources */,
 				C14C94C02BEE0322003ED970 /* MatchHistoryPresenter.swift in Sources */,
 				C1A92C372BEA3DF00072EF7C /* SummaryInteractor.swift in Sources */,
+				C14C94C82BEE327C003ED970 /* MatchHistoryDetailModel.swift in Sources */,
 				C1A92C422BEB25F30072EF7C /* IndividualInteractor.swift in Sources */,
 				C1A92C322BE8E0B30072EF7C /* SummaryViewController.swift in Sources */,
 				C12FD62A2BE66A120029730D /* ScoringWorker.swift in Sources */,
@@ -404,6 +441,9 @@
 				C1A92C352BEA02340072EF7C /* TabBarController.swift in Sources */,
 				C1A92C462BEB60600072EF7C /* IndividualWorker.swift in Sources */,
 				C1F803EE2BE0CAB10005C784 /* Team.swift in Sources */,
+				C14C94C62BEE3001003ED970 /* MatchHistoryDetailTableViewCell.swift in Sources */,
+				C14C94C42BEE2F54003ED970 /* MatchHistoryDetailViewController.swift in Sources */,
+				C14C94CE2BEE4545003ED970 /* MatchHistoryDetailPresenter.swift in Sources */,
 				C13405442BE5059C00D894BA /* ScoringModel.swift in Sources */,
 				C1F803F02BE10CB30005C784 /* BattingSetupViewController.swift in Sources */,
 				C1A92C3B2BEA41B00072EF7C /* SummaryModel.swift in Sources */,

@@ -31,6 +31,27 @@ class MatchHistoryViewController: UIViewController, UITableViewDelegate, UITable
         table.dataSource = self
         table.delegate = self
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if segue.identifier == "ShowMatchHistoryDetail"{
+            guard let historyDetailVC = segue.destination as? MatchHistoryDetailViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            guard let selectedMatchCell = sender as? MatchHistoryCell else {
+                fatalError("Unexpected sender: \( String(describing: sender))")
+            }
+            guard let indexPath = table.indexPath(for: selectedMatchCell) else
+            {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            let selectedMatch = data[indexPath.row]
+            
+            historyDetailVC.matchId = selectedMatch.0
+            historyDetailVC.matchIndex = indexPath.row
+        }
+    }
 
     @IBAction func createMatch(_ sender: UIButton) {
     }
