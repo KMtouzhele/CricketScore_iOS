@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+class MatchHistoryPresenter {
+    weak var viewController: MatchHistoryViewController?
+    func presentMatchTeamInfo(matchTeamInfo:[(String, String, String, Int, Int)]) {
+        print("MatchHistoryPresenter preseting: \(matchTeamInfo)")
+        viewController?.data = matchTeamInfo
+        viewController?.table.reloadData()
+    }
+}

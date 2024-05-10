@@ -9,6 +9,12 @@ import UIKit
 
 class MatchHistoryCell: UITableViewCell {
 
+    @IBOutlet weak var battingTeamName: UILabel!
+    @IBOutlet weak var bowlingTeamName: UILabel!
+    @IBOutlet weak var totalWickets: UILabel!
+    @IBOutlet weak var totalRuns: UILabel!
+    
+    var matchId = ""
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
