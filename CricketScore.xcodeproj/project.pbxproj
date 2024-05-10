@@ -21,6 +21,12 @@
 		C13405442BE5059C00D894BA /* ScoringModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13405432BE5059C00D894BA /* ScoringModel.swift */; };
 		C13405462BE5063A00D894BA /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13405452BE5063A00D894BA /* Ball.swift */; };
 		C143660C2BE3514C00FBEB28 /* BowlingSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C143660B2BE3514C00FBEB28 /* BowlingSetupViewController.swift */; };
+		C14C94AB2BECF6A1003ED970 /* SettingsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C94AA2BECF6A1003ED970 /* SettingsWorker.swift */; };
+		C14C94AD2BECFFA7003ED970 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C94AC2BECFFA7003ED970 /* SettingsViewController.swift */; };
+		C14C94AF2BECFFF4003ED970 /* PlayerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C94AE2BECFFF4003ED970 /* PlayerViewCell.swift */; };
+		C14C94B12BED00DD003ED970 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C94B02BED00DD003ED970 /* SettingsModel.swift */; };
+		C14C94B42BEDC760003ED970 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C94B32BEDC760003ED970 /* SettingsInteractor.swift */; };
+		C14C94B62BEDCAA5003ED970 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C94B52BEDCAA5003ED970 /* SettingsPresenter.swift */; };
 		C1659EC32BDFC4DF00D9A360 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1659EC22BDFC4DF00D9A360 /* AppDelegate.swift */; };
 		C1659EC52BDFC4DF00D9A360 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1659EC42BDFC4DF00D9A360 /* SceneDelegate.swift */; };
 		C1659ECA2BDFC4DF00D9A360 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C1659EC92BDFC4DF00D9A360 /* Base */; };
@@ -65,6 +71,12 @@
 		C13405432BE5059C00D894BA /* ScoringModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringModel.swift; sourceTree = "<group>"; };
 		C13405452BE5063A00D894BA /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		C143660B2BE3514C00FBEB28 /* BowlingSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlingSetupViewController.swift; sourceTree = "<group>"; };
+		C14C94AA2BECF6A1003ED970 /* SettingsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWorker.swift; sourceTree = "<group>"; };
+		C14C94AC2BECFFA7003ED970 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		C14C94AE2BECFFF4003ED970 /* PlayerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewCell.swift; sourceTree = "<group>"; };
+		C14C94B02BED00DD003ED970 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		C14C94B32BEDC760003ED970 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
+		C14C94B52BEDCAA5003ED970 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		C1659EBF2BDFC4DF00D9A360 /* CricketScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CricketScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1659EC22BDFC4DF00D9A360 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1659EC42BDFC4DF00D9A360 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +152,19 @@
 			path = BowlingSetup;
 			sourceTree = "<group>";
 		};
+		C14C94A92BECF681003ED970 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				C14C94AA2BECF6A1003ED970 /* SettingsWorker.swift */,
+				C14C94AC2BECFFA7003ED970 /* SettingsViewController.swift */,
+				C14C94AE2BECFFF4003ED970 /* PlayerViewCell.swift */,
+				C14C94B02BED00DD003ED970 /* SettingsModel.swift */,
+				C14C94B32BEDC760003ED970 /* SettingsInteractor.swift */,
+				C14C94B52BEDCAA5003ED970 /* SettingsPresenter.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		C1659EB62BDFC4DF00D9A360 = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +211,7 @@
 		C1A92C332BEA01FE0072EF7C /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
+				C14C94A92BECF681003ED970 /* Settings */,
 				C1A92C3E2BEB1F3C0072EF7C /* Individual */,
 				C13405402BE484B900D894BA /* Scoring */,
 				C1A92C302BE8932B0072EF7C /* Summary */,
@@ -330,12 +356,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1212AE32BE3648F00D7E928 /* BowlingSetupWorker.swift in Sources */,
+				C14C94AF2BECFFF4003ED970 /* PlayerViewCell.swift in Sources */,
 				C1F803E22BE0C4C30005C784 /* BattingSetupModel.swift in Sources */,
 				C1212AE12BE3646B00D7E928 /* BowlingSetupPresenter.swift in Sources */,
 				C1F803E42BE0C56C0005C784 /* BattingSetupInteractor.swift in Sources */,
 				C13405422BE484D000D894BA /* ScoringViewController.swift in Sources */,
+				C14C94AD2BECFFA7003ED970 /* SettingsViewController.swift in Sources */,
 				C1212ADD2BE363C600D7E928 /* BowlingSetupModel.swift in Sources */,
 				C143660C2BE3514C00FBEB28 /* BowlingSetupViewController.swift in Sources */,
+				C14C94B42BEDC760003ED970 /* SettingsInteractor.swift in Sources */,
 				C1A92C402BEB1F6E0072EF7C /* IndividualViewController.swift in Sources */,
 				C12FD6282BE668D50029730D /* ScoringInteractor.swift in Sources */,
 				C1212ADB2BE3579E00D7E928 /* MatchHistoryRouter.swift in Sources */,
@@ -343,7 +372,9 @@
 				C1659EC32BDFC4DF00D9A360 /* AppDelegate.swift in Sources */,
 				C1A92C392BEA3DFC0072EF7C /* SummaryWorker.swift in Sources */,
 				C1A92C482BEB6A430072EF7C /* IndividualPresenter.swift in Sources */,
+				C14C94B12BED00DD003ED970 /* SettingsModel.swift in Sources */,
 				C1212AE52BE365AE00D7E928 /* Match.swift in Sources */,
+				C14C94AB2BECF6A1003ED970 /* SettingsWorker.swift in Sources */,
 				C1A92C372BEA3DF00072EF7C /* SummaryInteractor.swift in Sources */,
 				C1A92C422BEB25F30072EF7C /* IndividualInteractor.swift in Sources */,
 				C1A92C322BE8E0B30072EF7C /* SummaryViewController.swift in Sources */,
@@ -365,6 +396,7 @@
 				C1A92C4A2BEB8A190072EF7C /* StrikerViewCell.swift in Sources */,
 				C1212AD92BE3559C00D7E928 /* MatchHistoryViewController.swift in Sources */,
 				C1F803E82BE0C63E0005C784 /* BattingSetupWorker.swift in Sources */,
+				C14C94B62BEDCAA5003ED970 /* SettingsPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

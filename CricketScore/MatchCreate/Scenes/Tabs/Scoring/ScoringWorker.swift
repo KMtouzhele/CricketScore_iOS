@@ -47,7 +47,9 @@ class ScoringWorker: RetrievePlayersFromFirestore, BallToFirestore {
         let db = Firestore.firestore()
         let playersCollection = db.collection("players")
         
-        let query = playersCollection.whereField("teamId", isEqualTo: teamId)
+        let query = playersCollection
+            .whereField("teamId", isEqualTo: teamId)
+            .whereField("status", in: ["playing","available"])
         query.getDocuments { (snapshot, error) in
             if let error = error {
                 completion(nil, error)
