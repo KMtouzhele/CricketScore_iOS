@@ -756,13 +756,13 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nWS-GR-MRn">
                                                                     <rect key="frame" x="0.0" y="4.6666666666666643" width="115" height="42.666666666666664"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="RUNS LOST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLI-Ot-zlJ">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RUNS LOST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLI-Ot-zlJ">
                                                                             <rect key="frame" x="23.666666666666664" y="0.0" width="67.666666666666686" height="14.333333333333334"/>
                                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTE-nj-XcL">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTE-nj-XcL">
                                                                             <rect key="frame" x="52" y="22.333333333333329" width="11.333333333333336" height="20.333333333333329"/>
                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                             <nil key="textColor"/>
@@ -790,13 +790,13 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dBi-8b-jNx">
                                                                     <rect key="frame" x="230" y="4.6666666666666643" width="115" height="42.666666666666664"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WICKTES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fe1-r1-qFx">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="WICKTES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fe1-r1-qFx">
                                                                             <rect key="frame" x="30.666666666666686" y="0.0" width="54" height="14.333333333333334"/>
                                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLc-je-dhO">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLc-je-dhO">
                                                                             <rect key="frame" x="52" y="22.333333333333329" width="11.333333333333336" height="20.333333333333329"/>
                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                             <nil key="textColor"/>
@@ -953,6 +953,7 @@
                                                     <outlet property="playerName" destination="Zb4-FD-cSw" id="g9h-Mi-0yX"/>
                                                     <outlet property="playerStatus" destination="eDk-2F-oqo" id="MdV-fo-1Cd"/>
                                                     <outlet property="teamType" destination="2vC-C7-kzV" id="aTz-cP-J7d"/>
+                                                    <segue destination="iYj-05-oAy" kind="showDetail" identifier="EditPlayerDetailSegue" id="pUu-5E-gQn"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -988,6 +989,102 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wtP-cw-9hL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5206.8702290076335" y="1140.1408450704225"/>
+        </scene>
+        <!--Settings Detail View Controller-->
+        <scene sceneID="npy-cT-Tnd">
+            <objects>
+                <viewController id="iYj-05-oAy" customClass="SettingsDetailViewController" customModule="CricketScore" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dXp-eS-3Ri">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gtt-7O-ki5">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                                <items>
+                                    <navigationItem title="Title" id="zEK-4Z-hni">
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="MWE-bb-TSz">
+                                            <connections>
+                                                <action selector="onSave:" destination="iYj-05-oAy" id="MHK-82-b1P"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="gaS-9C-Acs">
+                                <rect key="frame" x="24" y="80.000000000000014" width="345" height="218.33333333333337"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZP-8D-I9t">
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nde-zB-uFa">
+                                        <rect key="frame" x="0.0" y="33" width="345" height="62.333333333333343"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit player name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1F2-JC-Mmv">
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pPb-Kt-gTb">
+                                                <rect key="frame" x="0.0" y="28.333333333333343" width="345" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TeamType" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQE-R1-rlW">
+                                        <rect key="frame" x="0.0" y="111.33333333333334" width="345" height="20.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epF-Lc-zRc">
+                                        <rect key="frame" x="0.0" y="147.66666666666666" width="345" height="20.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2xR-v2-JUe">
+                                        <rect key="frame" x="0.0" y="184" width="345" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Delete this Player">
+                                            <color key="baseBackgroundColor" systemColor="systemRedColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="onDelete:" destination="iYj-05-oAy" eventType="touchUpInside" id="pnd-re-RA5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="a49-dh-5yd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gaS-9C-Acs" firstAttribute="top" secondItem="Gtt-7O-ki5" secondAttribute="bottom" constant="24" id="10C-UH-bwP"/>
+                            <constraint firstItem="Gtt-7O-ki5" firstAttribute="top" secondItem="a49-dh-5yd" secondAttribute="top" id="4er-FW-JTO"/>
+                            <constraint firstItem="a49-dh-5yd" firstAttribute="trailing" secondItem="gaS-9C-Acs" secondAttribute="trailing" constant="24" id="9CS-BB-Zhj"/>
+                            <constraint firstItem="gaS-9C-Acs" firstAttribute="leading" secondItem="a49-dh-5yd" secondAttribute="leading" constant="24" id="SZb-05-XIE"/>
+                            <constraint firstItem="a49-dh-5yd" firstAttribute="trailing" secondItem="Gtt-7O-ki5" secondAttribute="trailing" id="Zuu-eB-6X9"/>
+                            <constraint firstItem="Gtt-7O-ki5" firstAttribute="leading" secondItem="a49-dh-5yd" secondAttribute="leading" id="tmU-xH-F3x"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnDelete" destination="2xR-v2-JUe" id="PCW-I5-ea2"/>
+                        <outlet property="naviBar" destination="Gtt-7O-ki5" id="3bb-of-Wgm"/>
+                        <outlet property="playerId" destination="bZP-8D-I9t" id="EmT-m5-t1O"/>
+                        <outlet property="playerName" destination="pPb-Kt-gTb" id="1Xs-BO-YIU"/>
+                        <outlet property="playerStatus" destination="epF-Lc-zRc" id="oGL-pq-xDi"/>
+                        <outlet property="playerTeamType" destination="MQE-R1-rlW" id="mjQ-0p-O0Q"/>
+                        <segue destination="G58-97-A9t" kind="unwind" identifier="saveSegue" unwindAction="unWindToSettingsWithSender:" id="Ia0-cQ-nJF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WZZ-uU-n29" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="G58-97-A9t" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="5976" y="1140"/>
         </scene>
         <!--Scoring-->
         <scene sceneID="qu0-QR-O6N">

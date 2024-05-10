@@ -13,7 +13,10 @@ struct SettingsModel {
     }
     
     struct Response {
-        
+        struct updatePlayerResponse {
+            let playerId: String
+            let updatedName: String
+        }
     }
     
     struct ViewModel {

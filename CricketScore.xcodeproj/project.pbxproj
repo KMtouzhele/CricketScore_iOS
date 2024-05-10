@@ -27,6 +27,7 @@
 		C14C94B12BED00DD003ED970 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C94B02BED00DD003ED970 /* SettingsModel.swift */; };
 		C14C94B42BEDC760003ED970 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C94B32BEDC760003ED970 /* SettingsInteractor.swift */; };
 		C14C94B62BEDCAA5003ED970 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C94B52BEDCAA5003ED970 /* SettingsPresenter.swift */; };
+		C14C94B82BEDDB9B003ED970 /* SettingsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C94B72BEDDB9B003ED970 /* SettingsDetailViewController.swift */; };
 		C1659EC32BDFC4DF00D9A360 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1659EC22BDFC4DF00D9A360 /* AppDelegate.swift */; };
 		C1659EC52BDFC4DF00D9A360 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1659EC42BDFC4DF00D9A360 /* SceneDelegate.swift */; };
 		C1659ECA2BDFC4DF00D9A360 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C1659EC92BDFC4DF00D9A360 /* Base */; };
@@ -77,6 +78,7 @@
 		C14C94B02BED00DD003ED970 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		C14C94B32BEDC760003ED970 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		C14C94B52BEDCAA5003ED970 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		C14C94B72BEDDB9B003ED970 /* SettingsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDetailViewController.swift; sourceTree = "<group>"; };
 		C1659EBF2BDFC4DF00D9A360 /* CricketScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CricketScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1659EC22BDFC4DF00D9A360 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1659EC42BDFC4DF00D9A360 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				C14C94B02BED00DD003ED970 /* SettingsModel.swift */,
 				C14C94B32BEDC760003ED970 /* SettingsInteractor.swift */,
 				C14C94B52BEDCAA5003ED970 /* SettingsPresenter.swift */,
+				C14C94B72BEDDB9B003ED970 /* SettingsDetailViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				C1A92C322BE8E0B30072EF7C /* SummaryViewController.swift in Sources */,
 				C12FD62A2BE66A120029730D /* ScoringWorker.swift in Sources */,
 				C1659EC52BDFC4DF00D9A360 /* SceneDelegate.swift in Sources */,
+				C14C94B82BEDDB9B003ED970 /* SettingsDetailViewController.swift in Sources */,
 				C1F803E62BE0C57F0005C784 /* BattingSetupPresenter.swift in Sources */,
 				C16DDEDC2BECB0700048ACE4 /* BowlerViewCell.swift in Sources */,
 				C1A92C3D2BEB0DC10072EF7C /* SummaryPresenter.swift in Sources */,

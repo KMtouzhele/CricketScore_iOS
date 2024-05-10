@@ -38,6 +38,24 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         interactor?.fetchAllPlayers(matchId: tabBar.summaryViewModel.matchId)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if segue.identifier == "EditPlayerDetailSegue"{
+            guard let settingsDetailVC = segue.destination as? SettingsDetailViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            guard let selectedPlayerCell = sender as? PlayerViewCell else {
+                fatalError("Unexpected sender: \( String(describing: sender))")
+            }
+            
+            guard let indexPath = table.indexPath(for: selectedPlayerCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            let selectedPlayerDetail = data.players[indexPath.row]
+            settingsDetailVC.playerDetail = selectedPlayerDetail
+            settingsDetailVC.index = indexPath.row
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.players.count
@@ -56,4 +74,12 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             return UITableViewCell()
         }
     }
+    
+    @IBAction func unWindToSettings(sender: UIStoryboardSegue){
+        if let settingDetailVC = sender.source as? SettingsDetailViewController{
+            interactor?.fetchAllPlayers(matchId: tabBar.summaryViewModel.matchId)
+            table.reloadData()
+        }
+    }
+
 }

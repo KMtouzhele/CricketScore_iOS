@@ -13,6 +13,7 @@ class SettingsInteractor: SettingsBusinessLogic {
     init(presenter: SettingsPresenter) {
         self.presenter = presenter
     }
+    
     func fetchAllPlayers(matchId: String) {
         worker.getPlayers(matchId: matchId) { allPlayers in
             guard let allPlayers = allPlayers else {
