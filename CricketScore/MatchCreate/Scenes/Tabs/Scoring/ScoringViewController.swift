@@ -72,6 +72,13 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        self.interactor?.getTeamPlayers(battingTeamId: self.battingTeamId!, bowlingTeamId: self.bowlingTeamId!) { [weak self] in
+            self?.convertDicToArray()
+        }
+    }
+    
     func displayScoreBoard(viewModel: ScoringModel.ViewModel.score) {
         overCalculator = viewModel.overCalculator
         strikerId = viewModel.strikerId

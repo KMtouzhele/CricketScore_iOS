@@ -11,6 +11,7 @@ import FirebaseFirestoreSwift
 
 class SettingsDetailViewController: UIViewController {
     
+    
     var playerDetail: (playerId: String, name: String, status: playerStatus, teamType: teamType)?
     var index: Int?
 
