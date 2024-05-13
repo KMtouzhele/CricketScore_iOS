@@ -57,6 +57,25 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    func displayNewMatchToast(){
+        let alertController = UIAlertController(
+            title: "Leaving this match..",
+            message: "You cannot resume if you proceed.",
+            preferredStyle: .alert
+        )
+        let ok = UIAlertAction(title: "Start a New Match", style: .destructive) { [weak self] (action:UIAlertAction) in
+            self?.performSegue(withIdentifier: "StartNewMatchSegue", sender: self)
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction) in
+            alertController.dismiss(animated: true, completion: nil)
+        }
+        
+        alertController.addAction(ok)
+        alertController.addAction(cancel)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.players.count
     }
@@ -82,4 +101,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
 
+    @IBAction func startNewMatch(_ sender: UIButton) {
+        displayNewMatchToast()
+    }
 }

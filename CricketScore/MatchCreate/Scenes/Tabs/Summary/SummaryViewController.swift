@@ -67,8 +67,15 @@ class SummaryViewController: UIViewController, DisplaySummary {
     }
     
     func displaySummary(viewModel: ScoringModel.ViewModel.summaryViewModel){
+        let totalBalls = viewModel.currentOver * 6 + viewModel.currentBall
+        var runRate: Float
+        if totalBalls == 0 {
+            runRate = 0
+        } else {
+            runRate = Float(viewModel.totalRuns) / (Float(totalBalls) / 6)
+        }
         battingScoreLabel.text = "\(viewModel.totalWickets) / \(viewModel.totalRuns)"
-        runRateLabel.text = "Placeholder"
+        runRateLabel.text = String(format: "%.3f", runRate)
         currentOverLabel.text = "\(viewModel.currentOver) . \(viewModel.currentBall)"
         extrasLabel.text = "\(viewModel.totalExtras)"
         battingTeamNameLabel.text = viewModel.battingTeamName

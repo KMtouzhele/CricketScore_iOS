@@ -72,8 +72,6 @@ class ScoringPresenter: PresentSocreBoard {
                 runsLost: runsLost + runs + teamRuns,
                 ballsDelivered: ballsDelivered + isDelivered
             )
-            print("Origin runs is \(runsStriker)")
-            print("New added run is \(runs)")
             scoringViewController?.displayScoreBoard(viewModel: viewModel)
         } else {
             let viewModel = ScoringModel.ViewModel.score(
@@ -120,6 +118,10 @@ class ScoringPresenter: PresentSocreBoard {
         let bowlerDismissed = ballRequest.bowlerId
         scoringViewController?.removeBowlerFromDic(bowlerId: bowlerDismissed)
         scoringViewController?.overCalculator = 0
+    }
+    
+    func presentMatchEndToast(){
+        scoringViewController?.displayMatchEndToast()
     }
     
 }

@@ -21,6 +21,7 @@ protocol PresentSocreBoard {
     func presentDefaultBowlerSelection(ballRequest: ScoringModel.Request.ballRequest)
     func presentDefaultStrikerSelection(ballRequest: ScoringModel.Request.ballRequest)
     func presentSummaryViewModel(summaryViewModel: ScoringModel.ViewModel.summaryViewModel)
+    func presentMatchEndToast()
 }
 
 class ScoringInteractor : ScoringBusinessLogic {
@@ -83,6 +84,9 @@ class ScoringInteractor : ScoringBusinessLogic {
         let strikerId = ballRequest.strikerId
         let nonStrikerId = ballRequest.nonStrikerId
         let bowlerId = ballRequest.bowlerId
+        
+        worker.updatePlayerStatusToFirestore(playerId: bowlerId, playerStatus: .playing)
+        
         if (ballRequest.result == .bowled ||
             ballRequest.result == .caught ||
             ballRequest.result == .caughtBowled ||
@@ -99,13 +103,12 @@ class ScoringInteractor : ScoringBusinessLogic {
         
         //When hit 5 balls, then check the 6th balls result.
         if scoreRequest.overCalculator == 5 && (ballRequest.result != .noBall || ballRequest.result != .wide){
-            worker.updatePlayerStatusToFirestore(playerId: nonStrikerId, playerStatus: .dismissed)
+            worker.updatePlayerStatusToFirestore(playerId: bowlerId, playerStatus: .dismissed)
             presenter?.presentDefaultBowlerSelection(ballRequest: ballRequest)
+            print("Dismissed a Bolwer.")
         } else {
-            worker.updatePlayerStatusToFirestore(playerId: nonStrikerId, playerStatus: .playing)
+            worker.updatePlayerStatusToFirestore(playerId: bowlerId, playerStatus: .playing)
         }
-        
-        worker.updatePlayerStatusToFirestore(playerId: bowlerId, playerStatus: .playing)
     }
     
     func updateSummaryData(
@@ -163,6 +166,26 @@ class ScoringInteractor : ScoringBusinessLogic {
             totalExtras: totalExtras + extra
         )
         presenter?.presentSummaryViewModel(summaryViewModel: updatedSummaryViewModel)
+    }
+    
+    func checkMatchEnd(
+        battingTeamDic: [String: String],
+        currentOver: Int,
+        currentBall: Int,
+        ballRequest: ScoringModel.Request.ballRequest
+    ){
+        if battingTeamDic.count == 2 &&
+            isWicket(request: ballRequest
+            ) {
+            presenter?.presentMatchEndToast()
+        } else if currentBall == 5 &&
+                    currentOver == 4 &&
+                    (ballRequest.result == .runs ||
+                     ballRequest.result == .fourBoundary ||
+                     ballRequest.result == .sixBoundary
+                    ){
+            presenter?.presentMatchEndToast()
+        }
     }
     
     private func isBallDelivered(request: ScoringModel.Request.ballRequest) -> Bool {

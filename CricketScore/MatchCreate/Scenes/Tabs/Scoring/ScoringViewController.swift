@@ -12,6 +12,7 @@ protocol ScoringBusinessLogic: AnyObject {
     func getTeamPlayers(battingTeamId: String, bowlingTeamId: String, completion: @escaping () -> Void)
     func addBall(ballRequest: ScoringModel.Request.ballRequest, scoreRequest: ScoringModel.Request.scoreRequest)
     func updateSummaryData(summaryViewModel: ScoringModel.ViewModel.summaryViewModel ,ballRequest: ScoringModel.Request.ballRequest)
+    func checkMatchEnd(battingTeamDic: [String: String], currentOver: Int, currentBall: Int, ballRequest: ScoringModel.Request.ballRequest)
 }
 
 enum PickerType {
@@ -148,6 +149,20 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
         ballsDelivered.text = "0"
     }
     
+    func displayMatchEndToast(){
+        let alertController = UIAlertController(
+            title: "Match Completed!",
+            message: "You can check in Match History page.",
+            preferredStyle: .alert
+        )
+        let ok = UIAlertAction(title: "OK", style: .default) { [weak self] (action:UIAlertAction) in
+            self?.performSegue(withIdentifier: "MatchEndSegue", sender: self)
+        }
+        
+        alertController.addAction(ok)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     private func convertDicToArray(){
         guard let battingTeamDic = self.battingTeamDic else {
             print("BattingTeamDic is nil")
@@ -243,6 +258,12 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
         print("OverCalculater: \(overCalculator)")
         print("Updated summary: \(String(describing: tabBar.summaryViewModel))")
         updateBtnConfirmStatus()
+        interactor?.checkMatchEnd(
+            battingTeamDic: battingTeamDic!,
+            currentOver: tabBar.summaryViewModel.currentOver,
+            currentBall: tabBar.summaryViewModel.currentBall,
+            ballRequest: ballRequest
+        )
     }
     @IBAction func btnReset(_ sender: UIButton) {
         extraDiselected()

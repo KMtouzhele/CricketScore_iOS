@@ -17,13 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXd-8N-vYG">
-                                <rect key="frame" x="24" y="119.00000000000001" width="345" height="33.666666666666671"/>
+                                <rect key="frame" x="24" y="75" width="345" height="33.666666666666657"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uWc-GU-Ih6">
-                                <rect key="frame" x="24" y="168.66666666666663" width="345" height="583"/>
+                                <rect key="frame" x="24" y="124.66666666666669" width="345" height="627"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MatchHistoryDetailTableViewCell" id="z9L-cR-kH0" customClass="MatchHistoryDetailTableViewCell" customModule="CricketScore" customModuleProvider="target">
@@ -121,6 +121,9 @@
                                 <rect key="frame" x="24" y="767.66666666666663" width="345" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Share this Match"/>
+                                <connections>
+                                    <action selector="shareMatchDetails:" destination="DRa-UY-bq2" eventType="touchUpInside" id="YAz-sA-VvD"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aPV-bg-wy5"/>
@@ -156,13 +159,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Mn-Qa-R1L">
-                                <rect key="frame" x="24" y="111" width="169" height="33.666666666666657"/>
+                                <rect key="frame" x="24" y="67" width="169" height="33.666666666666657"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="J7K-rl-5uG">
-                                <rect key="frame" x="24" y="160.66666666666663" width="345" height="583"/>
+                                <rect key="frame" x="24" y="116.66666666666669" width="345" height="627"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MatchHistoryCell" id="srb-MT-Weg" customClass="MatchHistoryCell" customModule="CricketScore" customModuleProvider="target">
@@ -299,13 +302,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🏏 Batting Team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIx-eV-VX6">
-                                <rect key="frame" x="24" y="111" width="345" height="33.666666666666657"/>
+                                <rect key="frame" x="24" y="67" width="345" height="33.666666666666657"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="mPc-hC-ej2">
-                                <rect key="frame" x="24" y="176.66666666666666" width="345" height="78.333333333333343"/>
+                                <rect key="frame" x="24" y="132.66666666666666" width="345" height="78.333333333333343"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KdH-tS-EW5">
                                         <rect key="frame" x="0.0" y="0.0" width="345" height="20.333333333333332"/>
@@ -321,7 +324,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="bdM-t0-QBn">
-                                <rect key="frame" x="24" y="287" width="345" height="356.33333333333326"/>
+                                <rect key="frame" x="24" y="242.99999999999997" width="345" height="356.33333333333326"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEB-hK-F70">
                                         <rect key="frame" x="0.0" y="0.0" width="345" height="20.333333333333332"/>
@@ -463,13 +466,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⚾️ Bowling Team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zc6-2F-ycr">
-                                <rect key="frame" x="24" y="111" width="205.66666666666666" height="33.666666666666657"/>
+                                <rect key="frame" x="24" y="67" width="205.66666666666666" height="33.666666666666657"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="kxR-i6-qGq">
-                                <rect key="frame" x="24" y="176.66666666666666" width="345" height="78.333333333333343"/>
+                                <rect key="frame" x="24" y="132.66666666666666" width="345" height="78.333333333333343"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7R-vw-gqM">
                                         <rect key="frame" x="0.0" y="0.0" width="345" height="20.333333333333332"/>
@@ -485,7 +488,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Lb2-jJ-7iZ">
-                                <rect key="frame" x="24" y="287" width="345" height="356.33333333333326"/>
+                                <rect key="frame" x="24" y="242.99999999999997" width="345" height="356.33333333333326"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXQ-Ev-3C0">
                                         <rect key="frame" x="0.0" y="0.0" width="345" height="20.333333333333332"/>
@@ -1209,6 +1212,9 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Start A New Match">
                                     <color key="baseBackgroundColor" systemColor="systemRedColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="startNewMatch:" destination="17L-7k-JaW" eventType="touchUpInside" id="X9I-b7-JXb"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Pih-UK-dTR"/>
@@ -1229,6 +1235,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="table" destination="s3r-YX-9Nu" id="kFr-qA-tvp"/>
+                        <segue destination="1mk-HO-nZa" kind="show" identifier="StartNewMatchSegue" id="dtQ-Jp-wgY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wtP-cw-9hL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1667,6 +1674,7 @@
                         <outlet property="sixStriker" destination="iJf-AH-2AI" id="eRr-sx-rF1"/>
                         <outlet property="stepper" destination="jzT-xT-5HA" id="Uig-zA-Qe3"/>
                         <outlet property="totalWickets" destination="i6V-d8-KK6" id="RN6-Eo-wUO"/>
+                        <segue destination="1mk-HO-nZa" kind="show" identifier="MatchEndSegue" id="E1x-kc-yKe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mSD-mG-Mie" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1714,6 +1722,9 @@
             <point key="canvasLocation" x="939.69465648854953" y="24.647887323943664"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="dtQ-Jp-wgY"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="cricket.ball" catalog="system" width="128" height="123"/>
         <image name="gear" catalog="system" width="128" height="122"/>

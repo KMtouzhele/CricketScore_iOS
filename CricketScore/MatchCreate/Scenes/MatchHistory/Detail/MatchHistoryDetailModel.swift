@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MatchHistoryDetailModel {
+struct MatchHistoryDetailModel: Codable {
     struct ViewModel {
         var matchDetailData: [
             (ballId: String,

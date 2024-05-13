@@ -29,6 +29,44 @@ class MatchHistoryDetailViewController: UIViewController, UITableViewDelegate, U
         table.delegate = self
         interactor?.fetchBalls(matchId: matchId)
     }
+    @IBAction func shareMatchDetails(_ sender: UIButton) {
+        let jsonData = prepareJsonData()
+        do {
+            let jsonString = try JSONSerialization.data(withJSONObject: jsonData, options: .prettyPrinted)
+            if let jsonString = String(data: jsonString, encoding: .utf8) {
+                print("JSON String:")
+                print(jsonString)
+                let activityViewController = UIActivityViewController(activityItems: [jsonString], applicationActivities: nil)
+                if let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+                    if let viewController = windowScene.windows.first?.rootViewController {
+                        activityViewController.popoverPresentationController?.sourceView = viewController.view
+                        viewController.present(activityViewController, animated: true, completion: nil)
+                    }
+                }
+            } else {
+                print("Failed to convert data to string")
+            }
+        } catch {
+            print("Error: \(error)")
+        }
+    }
+    
+    func prepareJsonData() -> [String: Any] {
+        var jsonData = [String: Any]()
+        var ballsData = [[String: Any]]()
+        for ball in data.matchDetailData {
+            var ballData = [String: Any]()
+            ballData["ballId"] = ball.ballId
+            ballData["strikerName"] = ball.strikerName
+            ballData["nonStrikerName"] = ball.nonStrikerName
+            ballData["bowlerName"] = ball.bowlerName
+            ballData["result"] = ball.result.rawValue
+            ballsData.append(ballData)
+        }
+        jsonData["matchDetailData"] = ballsData
+        
+        return jsonData
+    }
 
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
