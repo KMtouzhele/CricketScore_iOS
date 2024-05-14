@@ -13,17 +13,22 @@ protocol IndividualBusinessLogic: AnyObject {
 }
 //https://chatgpt.com/c/9809a356-81fd-4ac3-a216-55b98ee7084c
 
-class IndividualViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class IndividualViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate, UITableViewDelegate {
     var tabBar: TabBarController!
     
     var data = IndividualModel.tableData(
         strikers: [],
         bowlers: [])
     
+    var filteredStrikers: [(striker: String, name: String, runs: Int, ballsFaced: Int)] = []
+    var filteredBowlers: [(bowler: String, name: String, runsLost: Int, ballsDelivered: Int, wickets: Int)] = []
+    
     var currentShowingTeam = teamType.battingTeam
     
     var interactor: IndividualBusinessLogic?
     var presenter = IndividualPresenter()
+    @IBOutlet weak var strikerSearchBar: UISearchBar!
+    @IBOutlet weak var bowlerSearchBar: UISearchBar!
     
     @IBOutlet weak var emptyPrompt: UILabel!
     @IBOutlet weak var strikersTable: UITableView!
@@ -65,6 +70,9 @@ class IndividualViewController: UIViewController, UITableViewDataSource, UITable
         self.presenter.viewController = self
         bowlerTable.dataSource = self
         bowlerTable.delegate = self
+//        filteredStrikers = data.strikers
+//        filteredBowlers = data.bowlers
+        
         interactor?.fetchIndividualTracking(matchId: tabBar.summaryViewModel.matchId)
     }
     
@@ -77,17 +85,18 @@ class IndividualViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == strikersTable {
-            return data.strikers.count
-        } else {
-            return data.bowlers.count
+            return searchBarIsEmpty(searchBar: strikerSearchBar) ? data.strikers.count : filteredStrikers.count
+        } else if tableView == bowlerTable {
+            return searchBarIsEmpty(searchBar: bowlerSearchBar) ? data.bowlers.count : filteredBowlers.count
         }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == strikersTable {
             print("it's strikerTable")
             let cell = tableView.dequeueReusableCell(withIdentifier: "StrikerViewCell", for: indexPath) as! StrikerViewCell
-            let striker = data.strikers[indexPath.row]
+            let striker = searchBarIsEmpty(searchBar: strikerSearchBar) ? data.strikers[indexPath.row] : filteredStrikers[indexPath.row]
             cell.strikerName.text = striker.name
             cell.ballsFaced.text = String(striker.ballsFaced)
             cell.runs.text = String(striker.runs)
@@ -95,7 +104,7 @@ class IndividualViewController: UIViewController, UITableViewDataSource, UITable
         } else if tableView == bowlerTable {
             print("it's bowlerTable")
             let cell = tableView.dequeueReusableCell(withIdentifier: "BowlerViewCell", for: indexPath) as! BowlerViewCell
-            let bowler = data.bowlers[indexPath.row]
+            let bowler = searchBarIsEmpty(searchBar: bowlerSearchBar) ? data.bowlers[indexPath.row] : filteredBowlers[indexPath.row]
             cell.bowlerName.text = bowler.name
             cell.ballsDelivered.text = String(bowler.ballsDelivered)
             cell.runsLost.text = String(bowler.runsLost)
@@ -104,6 +113,20 @@ class IndividualViewController: UIViewController, UITableViewDataSource, UITable
         } else {
             print("No table")
             return UITableViewCell()
+        }
+    }
+    
+    func searchBarIsEmpty(searchBar: UISearchBar) -> Bool {
+        return searchBar.text?.isEmpty ?? true
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar == strikerSearchBar {
+            filteredStrikers = data.strikers.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+            strikersTable.reloadData()
+        } else if searchBar == bowlerSearchBar {
+            filteredBowlers = data.bowlers.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+            bowlerTable.reloadData()
         }
     }
 }
