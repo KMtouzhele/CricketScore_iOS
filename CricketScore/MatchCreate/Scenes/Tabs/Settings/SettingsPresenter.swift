@@ -24,5 +24,6 @@ class SettingsPresenter {
         }
         viewController?.data = viewModel
         viewController?.table.reloadData()
+        viewController?.emptyPrompt.isHidden = true
     }
 }

@@ -19,6 +19,7 @@ class MatchHistoryDetailViewController: UIViewController, UITableViewDelegate, U
     var interactor: MatchHistoryDetailInteractor?
     var presenter = MatchHistoryDetailPresenter()
 
+    @IBOutlet weak var emptyPrompt: UILabel!
     @IBOutlet weak var table: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()

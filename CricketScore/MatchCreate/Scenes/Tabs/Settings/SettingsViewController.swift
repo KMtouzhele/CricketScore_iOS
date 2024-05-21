@@ -20,6 +20,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     var presenter = SettingsPresenter()
     var interactor: SettingsBusinessLogic?
     
+    @IBOutlet weak var emptyPrompt: UILabel!
     @IBOutlet weak var table: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
