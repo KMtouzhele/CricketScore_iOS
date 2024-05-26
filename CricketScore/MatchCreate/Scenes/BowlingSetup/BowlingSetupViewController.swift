@@ -12,7 +12,7 @@ protocol BowlingSetupLogic: AnyObject {
     func prepareToFirestore(request: BowlingSetupModel.Request, completion: @escaping (String?, String?) -> Void)
 }
 
-class BowlingSetupViewController: UIViewController {
+class BowlingSetupViewController: UIViewController, UIImagePickerControllerDelegate,  UINavigationControllerDelegate {
     var battingTeamId: String?
     var bowlingTeamId: String?
     var matchId: String?
@@ -91,4 +91,65 @@ class BowlingSetupViewController: UIViewController {
     @IBOutlet weak var playerName3: UITextField!
     @IBOutlet weak var playerName4: UITextField!
     @IBOutlet weak var playerName5: UITextField!
+    @IBOutlet weak var playerImg1: UIImageView!
+    @IBOutlet weak var playerImg2: UIImageView!
+    @IBOutlet weak var playerImg3: UIImageView!
+    @IBOutlet weak var playerImg4: UIImageView!
+    @IBOutlet weak var playerImg5: UIImageView!
+    @IBAction func playerImgOnTap1(_ sender: UIButton) {
+        callImagePicker(for: sender)
+    }
+    @IBAction func playerImgOnTap2(_ sender: UIButton) {
+        callImagePicker(for: sender)
+    }
+    @IBAction func playerImgOnTap3(_ sender: UIButton) {
+        callImagePicker(for: sender)
+    }
+    @IBAction func playerImgOnTap4(_ sender: UIButton) {
+        callImagePicker(for: sender)
+    }
+    @IBAction func playerImgOnTap5(_ sender: UIButton) {
+        callImagePicker(for: sender)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        {
+            switch selectedButtonTag {
+            case 1:
+                playerImg1.image = image
+            case 2:
+                playerImg2.image = image
+            case 3:
+                playerImg3.image = image
+            case 4:
+                playerImg4.image = image
+            case 5:
+                playerImg5.image = image
+            default:
+                break
+            }
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    var selectedButtonTag: Int?
+    func callImagePicker(for button: UIButton){
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            print("Gallery available")
+            
+            selectedButtonTag = button.tag
+            
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = false
+            
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
 }

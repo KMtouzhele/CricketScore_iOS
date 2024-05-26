@@ -82,7 +82,6 @@ class ScoringInteractor : ScoringBusinessLogic {
         scoreRequest: ScoringModel.Request.scoreRequest
     ) {
         let strikerId = ballRequest.strikerId
-        let nonStrikerId = ballRequest.nonStrikerId
         let bowlerId = ballRequest.bowlerId
         
         worker.updatePlayerStatusToFirestore(playerId: bowlerId, playerStatus: .playing)
@@ -174,12 +173,12 @@ class ScoringInteractor : ScoringBusinessLogic {
         currentBall: Int,
         ballRequest: ScoringModel.Request.ballRequest
     ){
-        if battingTeamDic.count == 2 &&
+        if battingTeamDic.count == 1 &&
             isWicket(request: ballRequest
             ) {
             presenter?.presentMatchEndToast()
-        } else if currentBall == 5 &&
-                    currentOver == 4 &&
+        } else if currentBall == 0 &&
+                    currentOver == 5 &&
                     (ballRequest.result == .runs ||
                      ballRequest.result == .fourBoundary ||
                      ballRequest.result == .sixBoundary

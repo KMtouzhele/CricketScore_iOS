@@ -54,7 +54,6 @@ class ScoringPresenter: PresentSocreBoard {
         case .wide: isDelivered = 0; teamRuns = 1
         case .empty: runs = 0
         }
-        
         if response.ball.runs % 2 == 0 {
             let viewModel = ScoringModel.ViewModel.score(
                 overCalculator: overCalculator + isDelivered,
@@ -118,6 +117,7 @@ class ScoringPresenter: PresentSocreBoard {
         let bowlerDismissed = ballRequest.bowlerId
         scoringViewController?.removeBowlerFromDic(bowlerId: bowlerDismissed)
         scoringViewController?.overCalculator = 0
+        scoringViewController?.swapBatterPosition()
     }
     
     func presentMatchEndToast(){

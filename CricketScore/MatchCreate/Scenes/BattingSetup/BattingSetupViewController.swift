@@ -12,7 +12,7 @@ protocol BattingSetupLogic: AnyObject {
     func assembleTeam(request: BattingSetupModel.Request) -> BattingSetupModel.Response
 }
 
-class BattingSetupViewController: UIViewController, DisplayBattingSetupError {
+class BattingSetupViewController: UIViewController, DisplayBattingSetupError, UIImagePickerControllerDelegate,  UINavigationControllerDelegate {
     
     var interactor: BattingSetupLogic?
     var request: BattingSetupModel.Request?
@@ -23,6 +23,10 @@ class BattingSetupViewController: UIViewController, DisplayBattingSetupError {
         self.interactor = BattingSetupInteractor(presenter: self.presenter)
         self.presenter.viewController = self
         alertLabel.isHidden = true
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
     
@@ -71,6 +75,11 @@ class BattingSetupViewController: UIViewController, DisplayBattingSetupError {
         self.interactor?.emptyValidation(request: request)
 
     }
+    @IBOutlet weak var playerImg1: UIImageView!
+    @IBOutlet weak var playerImg2: UIImageView!
+    @IBOutlet weak var playerImg3: UIImageView!
+    @IBOutlet weak var playerImg4: UIImageView!
+    @IBOutlet weak var playerImg5: UIImageView!
     @IBOutlet weak var alertLabel: UILabel!
     @IBOutlet weak var teamName: UITextField!
     @IBOutlet weak var playerName5: UITextField!
@@ -78,4 +87,61 @@ class BattingSetupViewController: UIViewController, DisplayBattingSetupError {
     @IBOutlet weak var playerName3: UITextField!
     @IBOutlet weak var playerName2: UITextField!
     @IBOutlet weak var playerName1: UITextField!
+    
+    @IBAction func playerImg1(_ sender: UIButton) {
+        callImagePicker(for: sender)
+    }
+    @IBAction func playerImg2(_ sender: UIButton) {
+        callImagePicker(for: sender)
+    }
+    @IBAction func playerImg3(_ sender: UIButton) {
+        callImagePicker(for: sender)
+    }
+    @IBAction func playerImg4(_ sender: UIButton) {
+        callImagePicker(for: sender)
+    }
+    @IBAction func playerImg5(_ sender: UIButton) {
+        callImagePicker(for: sender)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        {
+            switch selectedButtonTag {
+            case 1:
+                playerImg1.image = image
+            case 2:
+                playerImg2.image = image
+            case 3:
+                playerImg3.image = image
+            case 4:
+                playerImg4.image = image
+            case 5:
+                playerImg5.image = image
+            default:
+                break
+            }
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    var selectedButtonTag: Int?
+    func callImagePicker(for button: UIButton){
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            print("Gallery available")
+            
+            selectedButtonTag = button.tag
+            
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = false
+            
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
 }

@@ -104,6 +104,35 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
         ballsDelivered.text = String(viewModel.ballsDelivered)
     }
     
+    func swapBatterPosition() {
+        //swap striker ids
+        var temp: String = strikerId ?? ""
+        strikerId = nonStrikerId
+        nonStrikerId = temp
+        //swap select buttons' titles
+        temp = selectStriker.title(for: .normal)!
+        let temp2 = selectNonStriker.title(for: .normal)!
+        selectNonStriker.setTitle(temp, for: .normal)
+        selectStriker.setTitle(temp2, for: .normal)
+        
+        temp = runsStriker.text!
+        runsStriker.text = runsNonStriker.text
+        runsNonStriker.text = temp
+        
+        temp = ballsFacedStriker.text!
+        ballsFacedStriker.text = ballsFacedNonStriker.text
+        ballsFacedNonStriker.text = temp
+        
+        temp = fourStriker.text!
+        fourStriker.text = fourNonStriker.text
+        fourStriker.text = temp
+        
+        temp = sixStriker.text!
+        sixStriker.text = sixNonStriker.text
+        sixNonStriker.text = temp
+        
+    }
+    
     func setDefaultStrikerSelection(){
         selectStriker.setTitle("Striker", for: .normal)
         strikerId = nil
@@ -198,10 +227,12 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
     }
     
     private func updateBtnConfirmStatus(){
-        if strikerId != nil && nonStrikerId != nil && bowlerId != nil {
-            btnConfirm.isEnabled = true
-        } else {
+        if strikerId == nil || nonStrikerId == nil || bowlerId == nil {
             btnConfirm.isEnabled = false
+        } else if strikerId == nonStrikerId {
+            btnConfirm.isEnabled = false
+        } else {
+            btnConfirm.isEnabled = true
         }
     }
     
@@ -258,12 +289,14 @@ class ScoringViewController: UIViewController, UpdateScoreBoard {
         print("OverCalculater: \(overCalculator)")
         print("Updated summary: \(String(describing: tabBar.summaryViewModel))")
         updateBtnConfirmStatus()
+        print(battingTeamDic?.count ?? -1)
         interactor?.checkMatchEnd(
             battingTeamDic: battingTeamDic!,
             currentOver: tabBar.summaryViewModel.currentOver,
             currentBall: tabBar.summaryViewModel.currentBall,
             ballRequest: ballRequest
         )
+        
     }
     @IBAction func btnReset(_ sender: UIButton) {
         extraDiselected()
