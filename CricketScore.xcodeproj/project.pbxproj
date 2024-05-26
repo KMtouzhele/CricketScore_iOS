@@ -230,7 +230,8 @@
 		C1659EC12BDFC4DF00D9A360 /* CricketScore */ = {
 			isa = PBXGroup;
 			children = (
-				C1F803DD2BE0C3580005C784 /* MatchCreate */,
+				C1F803DF2BE0C3B20005C784 /* Scenes */,
+				C1F803DE2BE0C3820005C784 /* Models */,
 				C1CC86782BE0A3AD00B1D64C /* GoogleService-Info.plist */,
 				C1659EC22BDFC4DF00D9A360 /* AppDelegate.swift */,
 				C1659EC42BDFC4DF00D9A360 /* SceneDelegate.swift */,
@@ -278,15 +279,6 @@
 				C16DDEDB2BECB0700048ACE4 /* BowlerViewCell.swift */,
 			);
 			path = Individual;
-			sourceTree = "<group>";
-		};
-		C1F803DD2BE0C3580005C784 /* MatchCreate */ = {
-			isa = PBXGroup;
-			children = (
-				C1F803DF2BE0C3B20005C784 /* Scenes */,
-				C1F803DE2BE0C3820005C784 /* Models */,
-			);
-			path = MatchCreate;
 			sourceTree = "<group>";
 		};
 		C1F803DE2BE0C3820005C784 /* Models */ = {

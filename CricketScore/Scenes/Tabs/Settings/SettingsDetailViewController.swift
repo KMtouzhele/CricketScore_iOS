@@ -86,7 +86,6 @@ class SettingsDetailViewController: UIViewController {
     
     private func deletePlayer(response: SettingsModel.Response.updatePlayerResponse){
         let playerId = response.playerId
-        let newName = response.updatedName
         let db = Firestore.firestore()
         let playerCollection = db.collection("players")
         let doc = playerCollection.document(playerId)

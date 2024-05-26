@@ -96,7 +96,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @IBAction func unWindToSettings(sender: UIStoryboardSegue){
-        if let settingDetailVC = sender.source as? SettingsDetailViewController{
+        if sender.source is SettingsDetailViewController{
             interactor?.fetchAllPlayers(matchId: tabBar.summaryViewModel.matchId)
             table.reloadData()
         }
